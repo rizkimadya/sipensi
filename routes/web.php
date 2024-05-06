@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// authetication
+Route::get('/login', [AuthController::class, 'login']);
+Route::get('/regis', [AuthController::class, 'regis']);
+
 
 Route::get('/', [UserController::class, 'home']);
 Route::get('/properties', [UserController::class, 'properties']);

@@ -35,7 +35,7 @@
                         <li><a href="{{url('/')}}" class="{{ $title == 'Home' ? 'active' : '' }}">Home</a></li>
                         <li><a href="{{url('/properties')}}" class="{{ $title == 'Properties' ? 'active' : '' }}">Properties</a></li>
                         <li><a href="{{url('/contact')}}" class="{{ $title == 'Contact' ? 'active' : '' }}">Contact Us</a></li>
-                        <li><a href="#"><i class="fa fa-calendar"></i> Login</a></li>
+                        <li><a href="{{url('/login')}}"><i class="fa fa-calendar"></i> Login</a></li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
