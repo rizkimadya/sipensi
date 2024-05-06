@@ -15,6 +15,7 @@
 </head>
 
 <body class="img js-fullheight" style="background-image: url(assets_login/images/bg.jpg);">
+    @include('sweetalert::alert')
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
@@ -25,32 +26,45 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-10">
+                    @if (session('success'))
+                        <p class="alert alert-success">{{ session('success') }}</p>
+                    @endif
+                    @if (session('wait'))
+                        <p class="alert alert-danger">{{ session('wait') }}</p>
+                    @endif
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $err)
+                            <p class="alert alert-danger">{{ $err }}</p>
+                        @endforeach
+                    @endif
                     <div class="login-wrap p-0">
-                        <form action="#" class="signin-form">
+                        <form action="{{ url('/regis') }}" method="POST" class="signin-form">
+                            @csrf
+                            <input type="hidden" name="roles" value="user">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                                        <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Username" required>
+                                        <input type="text" class="form-control" name="username" placeholder="Username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="Nomor Whatsapp"
+                                        <input type="number" class="form-control" name="no_wa" placeholder="Nomor Whatsapp"
                                             required>
                                     </div>
                                     <div class="form-group">
                                         <input id="password-field" type="password" class="form-control"
-                                        placeholder="Password" required>
+                                            placeholder="Password" name="password" required>
                                         <span toggle="#password-field"
-                                        class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                            class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Alamat" required>
+                                        <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
                                     </div>
                                 </div>
                             </div>

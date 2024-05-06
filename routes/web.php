@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// authetication
-Route::get('/login', [AuthController::class, 'login']);
+// authentication
+Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/regis', [AuthController::class, 'regis']);
+Route::post('/login', [AuthController::class, 'postLogin']);
+Route::post('/regis', [AuthController::class, 'postRegis']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
 
 Route::get('/', [UserController::class, 'home']);
