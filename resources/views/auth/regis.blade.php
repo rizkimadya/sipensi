@@ -14,13 +14,15 @@
 
 </head>
 
-<body class="img js-fullheight" style="background-image: url(assets_login/images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(assets_login/images/bg2.jpg);">
     @include('sweetalert::alert')
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section mb-0">SIPENSI</h2>
+                    <a href="{{url('/')}}" class="d-flex justify-content-center mb-3">
+                        <img alt="Logo" class="heading-section mb-0" src="{{ asset('assets2/media/logos/sipensi-logo.png') }}" style="width: 50%;" />
+                    </a>
                     <span class="bg-white py-1 px-2">Sistem Informasi Penyewaan & Reservasi Villa</span>
                 </div>
             </div>

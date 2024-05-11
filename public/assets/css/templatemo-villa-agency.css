@@ -20,16 +20,16 @@ Table of contents
 09. footer
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
@@ -109,10 +109,10 @@ img {
   overflow: hidden;
 }
 
-/* 
+/*
 ---------------------------------------------
 Global Styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -151,7 +151,7 @@ body {
 }
 
 .section-heading h6 {
-  color: #ee626b;
+  color: #704725 ;
   font-size: 15px;
   text-transform: uppercase;
   font-weight: 700;
@@ -171,7 +171,7 @@ body {
 }
 
 .icon-button a i {
-  background-color: #f35525;
+  background-color: #e3b69d;
   height: 50px;
   width: 50px;
   text-align: center;
@@ -183,7 +183,7 @@ body {
 }
 
 .icon-button a:hover {
-  color: #f35525;
+  color: #e3b69d;
 }
 
 .icon-button a:hover i {
@@ -204,14 +204,14 @@ body {
 }
 
 .main-button a:hover {
-  background-color: #f35525;
+  background-color: #e3b69d;
   color: #fff;
 }
 
-/* 
+/*
 ---------------------------------------------
 Pre-loader Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .js-preloader {
@@ -281,7 +281,7 @@ Pre-loader Style
   height: 16px;
   top: 12px;
   left: 15px;
-  background: #f35525;
+  background: #e3b69d;
   border-radius: 50%;
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -304,16 +304,16 @@ Pre-loader Style
   width: 16px;
   height: 16px;
   margin-left: 16px;
-  background: #f35525;
+  background: #e3b69d;
   border-radius: 50%;
 }
 
 
 
-/* 
+/*
 ---------------------------------------------
 Header Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .sub-header {
@@ -348,7 +348,7 @@ Header Style
 }
 
 .sub-header ul.social-links li a:hover {
-  background-color: #f35525;
+  background-color: #e3b69d;
 }
 
 .sub-header ul.info li {
@@ -367,7 +367,7 @@ Header Style
 
 .sub-header ul.info li i {
   font-size: 20px;
-  color: #f35525;
+  color: #e3b69d;
   margin-right: 8px;
 }
 
@@ -474,7 +474,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a i {
-  background-color: #f35525;
+  background-color: #e3b69d;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -494,16 +494,16 @@ Header Style
 }
 
 .header-area .main-nav .nav li:hover a {
-  color: #f35525;
+  color: #e3b69d;
 }
 
 .header-area .main-nav .nav li a.active {
-  color: #f35525;
+  color: #e3b69d;
 }
 
 
 .background-header .main-nav .nav li a.active {
-  color: #f35525;
+  color: #e3b69d;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -627,8 +627,7 @@ Header Style
 
 @media (max-width: 767px) {
   .background-header .main-nav {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 0px 0px 25px 25px;
+    background-color: transparent;
     width: 100%;
   }
   .background-header .main-nav .nav,
@@ -673,7 +672,7 @@ Header Style
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #ee626b!important;
+    color: #704725 !important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -727,13 +726,13 @@ Header Style
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
-  
+
 }
 
-/* 
+/*
 ---------------------------------------------
 Banner Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .main-banner .item {
@@ -769,7 +768,7 @@ Banner Style
 
 .main-banner .item span.category em {
   font-style: normal;
-  color: #f35525;
+  color: #e3b69d;
 }
 
 .main-banner .item h2 {
@@ -798,7 +797,7 @@ Banner Style
 }
 
 .main-banner .owl-dots .active {
-  background-color: #f35525;
+  background-color: #e3b69d;
 }
 
 .main-banner .owl-nav {
@@ -840,10 +839,10 @@ Banner Style
 
 
 
-/* 
+/*
 ---------------------------------------------
 Featured Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .featured .left-image {
@@ -859,7 +858,7 @@ Featured Style
   width: 110px;
   height: 110px;
   line-height: 110px;
-  background-color: #f35525;
+  background-color: #e3b69d;
   border-radius: 50%;
   text-align: center;
   position: absolute;
@@ -899,7 +898,7 @@ Featured Style
 }
 
 .featured .accordion-button:not(.collapsed) {
-  color: #f35525;
+  color: #e3b69d;
   background-color: #fafafa;
   outline: none;
 }
@@ -951,10 +950,10 @@ Featured Style
   font-weight: 400;
 }
 
-/* 
+/*
 ---------------------------------------------
 Video Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .video {
@@ -996,15 +995,15 @@ Video Style
   display: inline-block;
   text-align: center;
   line-height: 52px;
-  color: #f35525;
+  color: #e3b69d;
   outline: 15px solid rgba(254, 85, 37, 0.5);
   font-size: 18px;
 }
 
-/* 
+/*
 ---------------------------------------------
 Fun Facts Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .fun-facts {
@@ -1038,14 +1037,14 @@ Fun Facts Style
 .fun-facts .counter h2 {
   margin-right: 25px;
   font-size: 40px;
-  color: #f35525;
+  color: #e3b69d;
 }
 
 .fun-facts .counter:after {
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: #f35525;
+  background-color: #e3b69d;
   border-radius: 50%;
   content: '';
   right: -25px;
@@ -1053,10 +1052,10 @@ Fun Facts Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Best Deal Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .best-deal {
@@ -1081,7 +1080,7 @@ Best Deal Style
 }
 
 .best-deal .tabs-content .nav-tabs .nav-link.active {
-  background-color: #f35525 !important;
+  background-color: #e3b69d !important;
   color: #fff;
 }
 
@@ -1146,10 +1145,10 @@ Best Deal Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Properties Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .properties .item {
@@ -1203,7 +1202,7 @@ Properties Style
 
 .properties .item h6 {
   font-size: 20px;
-  color: #f35525;
+  color: #e3b69d;
   margin-top: 6px;
   display: inline-block;
   float: right;
@@ -1215,10 +1214,10 @@ Properties Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Contact Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .contact {
@@ -1328,14 +1327,14 @@ Contact Style
 }
 
 .contact-content #contact-form button:hover {
-  background-color: #f35525;
+  background-color: #e3b69d;
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Footer Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 footer.footer-no-gap {
@@ -1368,10 +1367,10 @@ footer p a:hover {
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Page Header Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .page-heading {
@@ -1406,10 +1405,10 @@ Page Header Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Properties Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .properties ul.properties-filter {
@@ -1437,7 +1436,7 @@ Properties Style
 }
 
 .properties ul.properties-filter li a.is_active {
-  background-color: #f35525;
+  background-color: #e3b69d;
   color: #fff;
 }
 
@@ -1446,7 +1445,7 @@ Properties Style
 }
 
 .properties ul.properties-filter li a:hover {
-  color: #f35525;
+  color: #e3b69d;
 }
 
 .properties ul.pagination {
@@ -1477,15 +1476,15 @@ Properties Style
 
 .properties ul.pagination li a:hover,
 .properties ul.pagination li a.is_active {
-  background-color: #f35525;
+  background-color: #e3b69d;
   color: #fff;
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Single Page Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .single-property .main-image img {
@@ -1534,7 +1533,7 @@ Single Page Style
 }
 
 .single-property .accordion-button:not(.collapsed) {
-  color: #f35525;
+  color: #e3b69d;
   background-color: #fafafa;
   outline: none;
 }
@@ -1588,10 +1587,10 @@ Single Page Style
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Contact Page Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 .contact-page #map {
@@ -1688,14 +1687,14 @@ Contact Page Style
 }
 
 .contact-page #contact-form button:hover {
-  background-color: #f35525;
+  background-color: #e3b69d;
 }
 
 
-/* 
+/*
 ---------------------------------------------
 Responsive Style
---------------------------------------------- 
+---------------------------------------------
 */
 
 body {

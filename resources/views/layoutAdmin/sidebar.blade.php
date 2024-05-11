@@ -48,6 +48,10 @@
                 <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                     <div class="menu-item">
                         <!--begin:Menu link-->
+                        <span class="menu-link mt-5">
+                            <span class="menu-title">HOME</span>
+                            <span class="menu-arrow d-lg-none"></span>
+                        </span>
                         <a class="menu-link {{ $title == 'Dashboard' ? 'active' : '' }}"
                             href="{{ url('/dashboard-admin') }}">
                             <span class="menu-icon">
@@ -73,6 +77,31 @@
                             <span class="menu-title">MENU</span>
                             <span class="menu-arrow d-lg-none"></span>
                         </span>
+                        <a class="menu-link mb-2 {{ $title == 'Produk' ? 'active' : '' }}"
+                        href="{{ url('/admin/produk') }}">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
+                            <span class="svg-icon svg-icon-3">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                        d="M18.041 22.041C18.5932 22.041 19.041 21.5932 19.041 21.041C19.041 20.4887 18.5932 20.041 18.041 20.041C17.4887 20.041 17.041 20.4887 17.041 21.041C17.041 21.5932 17.4887 22.041 18.041 22.041Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3"
+                                        d="M6.04095 22.041C6.59324 22.041 7.04095 21.5932 7.04095 21.041C7.04095 20.4887 6.59324 20.041 6.04095 20.041C5.48867 20.041 5.04095 20.4887 5.04095 21.041C5.04095 21.5932 5.48867 22.041 6.04095 22.041Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3"
+                                        d="M7.04095 16.041L19.1409 15.1409C19.7409 15.1409 20.141 14.7409 20.341 14.1409L21.7409 8.34094C21.9409 7.64094 21.4409 7.04095 20.7409 7.04095H5.44095L7.04095 16.041Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M19.041 20.041H5.04096C4.74096 20.041 4.34095 19.841 4.14095 19.541C3.94095 19.241 3.94095 18.841 4.14095 18.541L6.04096 14.841L4.14095 4.64095L2.54096 3.84096C2.04096 3.64096 1.84095 3.04097 2.14095 2.54097C2.34095 2.04097 2.94096 1.84095 3.44096 2.14095L5.44096 3.14095C5.74096 3.24095 5.94096 3.54096 5.94096 3.84096L7.94096 14.841C7.94096 15.041 7.94095 15.241 7.84095 15.441L6.54096 18.041H19.041C19.641 18.041 20.041 18.441 20.041 19.041C20.041 19.641 19.641 20.041 19.041 20.041Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Data Villa</span>
+                    </a>
                         <a class="menu-link mb-2 {{ $title == 'Kategori' ? 'active' : '' }}"
                             href="{{ url('/admin/kategori') }}">
                             <span class="menu-icon">
@@ -92,32 +121,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-title">Kategori</span>
-                        </a>
-                        <a class="menu-link mb-2 {{ $title == 'Produk' ? 'active' : '' }}"
-                            href="{{ url('/admin/produk') }}">
-                            <span class="menu-icon">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
-                                <span class="svg-icon svg-icon-3">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.3"
-                                            d="M18.041 22.041C18.5932 22.041 19.041 21.5932 19.041 21.041C19.041 20.4887 18.5932 20.041 18.041 20.041C17.4887 20.041 17.041 20.4887 17.041 21.041C17.041 21.5932 17.4887 22.041 18.041 22.041Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.3"
-                                            d="M6.04095 22.041C6.59324 22.041 7.04095 21.5932 7.04095 21.041C7.04095 20.4887 6.59324 20.041 6.04095 20.041C5.48867 20.041 5.04095 20.4887 5.04095 21.041C5.04095 21.5932 5.48867 22.041 6.04095 22.041Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.3"
-                                            d="M7.04095 16.041L19.1409 15.1409C19.7409 15.1409 20.141 14.7409 20.341 14.1409L21.7409 8.34094C21.9409 7.64094 21.4409 7.04095 20.7409 7.04095H5.44095L7.04095 16.041Z"
-                                            fill="currentColor" />
-                                        <path
-                                            d="M19.041 20.041H5.04096C4.74096 20.041 4.34095 19.841 4.14095 19.541C3.94095 19.241 3.94095 18.841 4.14095 18.541L6.04096 14.841L4.14095 4.64095L2.54096 3.84096C2.04096 3.64096 1.84095 3.04097 2.14095 2.54097C2.34095 2.04097 2.94096 1.84095 3.44096 2.14095L5.44096 3.14095C5.74096 3.24095 5.94096 3.54096 5.94096 3.84096L7.94096 14.841C7.94096 15.041 7.94095 15.241 7.84095 15.441L6.54096 18.041H19.041C19.641 18.041 20.041 18.441 20.041 19.041C20.041 19.641 19.641 20.041 19.041 20.041Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->
-                            </span>
-                            <span class="menu-title">Produk</span>
+                            <span class="menu-title">Pemilik Villa</span>
                         </a>
                         <a class="menu-link mb-2 {{ $title == 'Blog' ? 'active' : '' }}"
                             href="{{ url('/admin/blog') }}">
@@ -136,7 +140,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-title">Blog</span>
+                            <span class="menu-title">Penyewa</span>
                         </a>
                         <a class="menu-link mb-2 {{ $title == 'Testimoni' ? 'active' : '' }}"
                             href="{{ url('/admin/testimoni') }}">
@@ -155,51 +159,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                             </span>
-                            <span class="menu-title">Testimoni</span>
-                        </a>
-
-                        <span class="menu-link mt-5">
-                            <span class="menu-title">FORM</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <a class="menu-link mb-2 {{ $title == 'Komentar' ? 'active' : '' }}"
-                            href="{{ url('/admin/komentar') }}">
-                            <span class="menu-icon">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
-                                <span class="svg-icon svg-icon-2">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path opacity="0.3"
-                                            d="M20 3H4C2.89543 3 2 3.89543 2 5V16C2 17.1046 2.89543 18 4 18H4.5C5.05228 18 5.5 18.4477 5.5 19V21.5052C5.5 22.1441 6.21212 22.5253 6.74376 22.1708L11.4885 19.0077C12.4741 18.3506 13.6321 18 14.8167 18H20C21.1046 18 22 17.1046 22 16V5C22 3.89543 21.1046 3 20 3Z"
-                                            fill="currentColor" />
-                                        <rect x="6" y="12" width="7" height="2" rx="1"
-                                            fill="currentColor" />
-                                        <rect x="6" y="7" width="12" height="2" rx="1"
-                                            fill="currentColor" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->
-                            </span>
-                            <span class="menu-title">Komentar</span>
-                        </a>
-                        <a class="menu-link mb-2 {{ $title == 'Bantuan' ? 'active' : '' }}"
-                            href="{{ url('/admin/bantuan') }}">
-                            <span class="menu-icon">
-                                <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
-                                <span class="svg-icon svg-icon-3">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M13 5.91517C15.8 6.41517 18 8.81519 18 11.8152C18 12.5152 17.9 13.2152 17.6 13.9152L20.1 15.3152C20.6 15.6152 21.4 15.4152 21.6 14.8152C21.9 13.9152 22.1 12.9152 22.1 11.8152C22.1 7.01519 18.8 3.11521 14.3 2.01521C13.7 1.91521 13.1 2.31521 13.1 3.01521V5.91517H13Z"
-                                            fill="currentColor" />
-                                        <path opacity="0.3"
-                                            d="M19.1 17.0152C19.7 17.3152 19.8 18.1152 19.3 18.5152C17.5 20.5152 14.9 21.7152 12 21.7152C9.1 21.7152 6.50001 20.5152 4.70001 18.5152C4.30001 18.0152 4.39999 17.3152 4.89999 17.0152L7.39999 15.6152C8.49999 16.9152 10.2 17.8152 12 17.8152C13.8 17.8152 15.5 17.0152 16.6 15.6152L19.1 17.0152ZM6.39999 13.9151C6.19999 13.2151 6 12.5152 6 11.8152C6 8.81517 8.2 6.41515 11 5.91515V3.01519C11 2.41519 10.4 1.91519 9.79999 2.01519C5.29999 3.01519 2 7.01517 2 11.8152C2 12.8152 2.2 13.8152 2.5 14.8152C2.7 15.4152 3.4 15.7152 4 15.3152L6.39999 13.9151Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->
-                            </span>
-                            <span class="menu-title">Bantuan</span>
+                            <span class="menu-title">Transaksi</span>
                         </a>
                         <!--end:Menu link-->
                     </div>

@@ -26,8 +26,8 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <h1>Villa</h1>
+                    <a href="{{url('/')}}" style="width: 20%;" class="pt-3">
+                        <img src="{{asset('assets/images/logo.png')}}" alt="logo">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
