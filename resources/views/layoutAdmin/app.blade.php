@@ -175,7 +175,7 @@
     <script src="{{ asset('assets2/js/custom/utilities/modals/new-target.js') }}"></script>
     <script src="{{ asset('assets2/js/custom/utilities/modals/users-search.js') }}"></script>
 
-    {{-- <script>
+    <script>
         ClassicEditor
             .create(document.querySelector('#editor'), {
                 ckfinder: {
@@ -185,7 +185,7 @@
             .catch(error => {
                 console.error(error);
             });
-    </script> --}}
+    </script>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();

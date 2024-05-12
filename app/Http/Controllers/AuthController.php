@@ -34,13 +34,12 @@ class AuthController extends Controller
             if ($user->roles == 'admin') {
                 Alert::success('Berhasil Login', 'Selamat Datang Admin');
                 return redirect('/dashboard-admin');
-            } elseif ($user->roles == 'user') {
+            } elseif ($user->roles == 'pemilik') {
                 Alert::success('Berhasil Login', 'Selamat Datang ' . $user->username);
-                return redirect('/dashboard-user');
+                return redirect('/dashboard-pemilik');
             } else {
-                return back()->withErrors([
-                    'status' => 'Akun anda tidak tervalidasi',
-                ]);
+                Alert::success('Berhasil Login', 'Selamat Datang ' . $user->username);
+                return redirect('/dashboard-penyewa');
             }
         }
 

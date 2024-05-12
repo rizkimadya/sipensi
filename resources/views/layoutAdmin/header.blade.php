@@ -70,11 +70,17 @@
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bold d-flex align-items-center fs-5">Admin
+                                    <div class="fw-bold d-flex align-items-center fs-5">
+                                        {{ auth()->user()->nama_lengkap }}
                                         {{-- <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span> --}}
                                     </div>
-                                    <p class="fw-semibold text-muted fs-7">SIPENSI
-                                    </p>
+                                    @if (auth()->user()->roles === 'admin')
+                                        <p class="fw-semibold text-muted fs-7">ADMIN SIPENSI
+                                        </p>
+                                    @else
+                                        <p class="fw-semibold text-muted fs-7">PEMILIK VILLA
+                                        </p>
+                                    @endif
                                 </div>
                                 <!--end::Username-->
                             </div>

@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VillaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +32,34 @@ Route::get('/properties', [UserController::class, 'properties']);
 Route::get('/properties/details', [UserController::class, 'detailProperties']);
 Route::get('/contact', [UserController::class, 'contact']);
 
+Route::post('/upload', [VillaController::class, 'upload'])->name('ckeditor.upload');
 
 Route::group(['middleware' => ['auth', 'Roles:admin']], function () {
-    Route::get('/dashboard-admin', [AdminController::class, 'dashboard']);
+    Route::get('/dashboard-admin', [DashboardController::class, 'admin']);
+
+    // villa
+    Route::get('/admin/villa', [AdminController::class, 'indexVilla']);
+
+    // pemilik villa
+    Route::get('/admin/pemilik-villa', [AdminController::class, 'indexPemilik']);
+
+    // penyewa villa
+    Route::get('/admin/penyewa-villa', [AdminController::class, 'indexPenyewa']);
+
+    // transaksi
+    Route::get('/admin/transaksi', [AdminController::class, 'indexTransaksi']);
+});
+
+Route::group(['middleware' => ['auth', 'Roles:pemilik']], function () {
+    Route::get('/dashboard-pemilik', [DashboardController::class, 'pemilik']);
+
+    // villa
+    Route::get('/pemilik/villa', [VillaController::class, 'index']);
+
+    // transaksi
+    Route::get('/pemilik/transaksi', [TransaksiController::class, 'pemilikIndex']);
+});
+
+Route::group(['middleware' => ['auth', 'Roles:penyewa']], function () {
+    Route::get('/dashboard-penyewa', [DashboardController::class, 'penyewa']);
 });

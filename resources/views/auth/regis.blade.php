@@ -20,8 +20,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <a href="{{url('/')}}" class="d-flex justify-content-center mb-3">
-                        <img alt="Logo" class="heading-section mb-0" src="{{ asset('assets2/media/logos/sipensi-logo.png') }}" style="width: 50%;" />
+                    <a href="{{ url('/') }}" class="d-flex justify-content-center mb-3">
+                        <img alt="Logo" class="heading-section mb-0"
+                            src="{{ asset('assets2/media/logos/sipensi-logo.png') }}" style="width: 50%;" />
                     </a>
                     <span class="bg-white py-1 px-2">Sistem Informasi Penyewaan & Reservasi Villa</span>
                 </div>
@@ -42,20 +43,21 @@
                     <div class="login-wrap p-0">
                         <form action="{{ url('/regis') }}" method="POST" class="signin-form">
                             @csrf
-                            <input type="hidden" name="roles" value="user">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" required>
+                                        <input type="text" class="form-control" name="nama_lengkap"
+                                            placeholder="Nama Lengkap" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="username" placeholder="Username" required>
+                                        <input type="text" class="form-control" name="username"
+                                            placeholder="Username" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="no_wa" placeholder="Nomor Whatsapp"
-                                            required>
+                                        <input type="number" class="form-control" name="no_wa"
+                                            placeholder="Nomor Whatsapp" required>
                                     </div>
                                     <div class="form-group">
                                         <input id="password-field" type="password" class="form-control"
@@ -64,9 +66,19 @@
                                             class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
+                                        <input type="text" class="form-control" name="alamat" placeholder="Alamat"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="roles" id="roles" class="form-control" required>
+                                            <option value="" selected disabled>Roles</option>
+                                            <option value="penyewa">Penyewa Villa</option>
+                                            <option value="pemilik">Pemilik Villa</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
