@@ -13,7 +13,21 @@ return new class extends Migration
     {
         Schema::create('villas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('pemilik_id');
+            $table->json('gambar');
+            $table->string("nama_villa");
+            $table->string("harga");
+            $table->string("alamat");
+            $table->string("lokasi");
+            $table->string("status");
+            $table->string("kamar_tidur");
+            $table->string("jumlah_wc");
+            $table->string("jumlah_cctv");
+            $table->string("daya_tampung");
+            $table->text("keterangan")->nullable();
             $table->timestamps();
+
+            $table->foreign('pemilik_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

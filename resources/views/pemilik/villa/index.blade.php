@@ -1,6 +1,6 @@
 @extends('LayoutAdmin.app', ['title' => 'Villa'])
 
-@section('modal-add')
+@section('modal-button')
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <span class="svg-icon svg-icon-2">
@@ -12,71 +12,92 @@
         </span>
         Tambah Villa
     </button>
+@endsection
 
-    <!-- Modal -->
+@section('modal')
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Villa</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ url('/admin/villa') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div style="max-height: 70vh; overflow: auto">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="gambar" class="form-label">Gambar <i>*pilih banyak gambar</i></label>
-                                        <input type="file" class="form-control" name="gambar[]" required id="gambar"
-                                            multiple accept="image/*">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="nama_villa" class="form-label">Nama Villa</label>
-                                        <input type="text" class="form-control" name="nama_villa" id="nama_villa"
-                                            required placeholder="Masukkan Nama Villa">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="harga" class="form-label">Harga Sewa Villa</label>
-                                        <input type="number" class="form-control" name="harga" id="harga" required
-                                            placeholder="Masukkan Harga Sewa Villa">
-                                    </div>
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Villa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url('/pemilik/villa') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div style="max-height: 70vh; overflow: auto">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gambar" class="form-label">Gambar <i>*pilih banyak gambar</i></label>
+                                    <input type="file" class="form-control" name="gambar[]" required id="gambar"
+                                        multiple accept="image/*">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="alamat" class="form-label">Alamat Villa</label>
-                                        <input type="text" class="form-control" name="alamat" id="alamat" required
-                                            placeholder="Masukkan Alamat Villa">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="lokasi" class="form-label">Link Maps Lokasi Villa</label>
-                                        <input type="link" class="form-control" name="lokasi" id="berat" required
-                                            placeholder="Masukkan Link Maps Lokasi Villa">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="status" class="form-label">Status</label>
-                                        <select name="status" id="status" class="form-select" required>
-                                            <option value="" selected disabled>Pilih Status</option>
-                                            <option value="Tersedia">Tersedia</option>
-                                            <option value="Terisi">Terisi</option>
-                                        </select>
-                                    </div>
+                                <div class="mb-3">
+                                    <label for="nama_villa" class="form-label">Nama Villa</label>
+                                    <input type="text" class="form-control" name="nama_villa" id="nama_villa"
+                                        required placeholder="Masukkan Nama Villa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="harga" class="form-label">Harga Sewa Villa</label>
+                                    <input type="number" class="form-control" name="harga" id="harga" required
+                                        placeholder="Masukkan Harga Sewa Villa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat Villa</label>
+                                    <input type="text" class="form-control" name="alamat" id="alamat" required
+                                        placeholder="Masukkan Alamat Villa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lokasi" class="form-label">Link Maps Lokasi Villa</label>
+                                    <input type="link" class="form-control" name="lokasi" id="lokasi" required
+                                        placeholder="Masukkan Link Maps Lokasi Villa">
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="deskripsi" class="form-label">Deskripsi Fasilitas Villa</label>
-                                <textarea name="deskripsi" id="editor" style="height: 100px; color:#000;"></textarea>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status" id="status" class="form-select" required>
+                                        <option value="" selected disabled>Pilih Status</option>
+                                        <option value="Tersedia">Tersedia</option>
+                                        <option value="Terisi">Terisi</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kamar_tidur" class="form-label">Jumlah Kamar Tidur</label>
+                                    <input type="number" class="form-control" name="kamar_tidur" id="kamar_tidur" required
+                                        placeholder="Masukkan Jumlah Kamar Tidur" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jumlah_wc" class="form-label">Jumlah Kamar Mandi/Toilet</label>
+                                    <input type="number" class="form-control" name="jumlah_wc" id="jumlah_wc" required
+                                        placeholder="Masukkan Jumlah Kamar Mandi/Toilet" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jumlah_cctv" class="form-label">Jumlah CCTV</label>
+                                    <input type="number" class="form-control" name="jumlah_cctv" id="jumlah_cctv" required
+                                        placeholder="Masukkan Jumlah CCTV" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="daya_tampung" class="form-label">Jumlah Daya Tampung</label>
+                                    <input type="number" class="form-control" name="daya_tampung" id="daya_tampung" required
+                                        placeholder="Masukkan Jumlah Daya Tampung" value="0">
+                                </div>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="keterangan" class="form-label">Keterangan</label>
+                            <textarea name="keterangan" id="editor" style="height: 100px; color:#000;"></textarea>
+                        </div>
                     </div>
-                    <div class="modal-footer justify-content-center d-flex gap-2">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer justify-content-center d-flex gap-2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
+    </div>
     </div>
 @endsection
 
@@ -89,15 +110,15 @@
                         <tr>
                             <th>No</th>
                             <th>Gambar</th>
-                            <th>Kategori Villa</th>
                             <th>Nama Villa</th>
-                            <th>Berat</th>
-                            <th>Stok</th>
+                            <th>Harga</th>
+                            <th>Alamat</th>
+                            <th>Status</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($villa as $item)
+                        @foreach ($villa as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
@@ -109,10 +130,14 @@
                                     @endphp
                                     <img src="/{{ $firstImage }}" alt="img" width="40px">
                                 </td>
-                                <td>{{ $item->kategori->name }}</td>
-                                <td>{{ $item->nama_Villa }}</td>
-                                <td>{{ $item->berat }}</td>
-                                <td>{{ $item->stok }}</td>
+                                <td>{{ $item->nama_villa }}</td>
+                                <td>{{ $item->harga }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                @if ($item->status == 'Tersedia')
+                                    <td class="fw-bold text-success">{{ $item->status }}</td>
+                                @else
+                                    <td class="fw-bold text-danger">{{ $item->status }}</td>
+                                @endif
                                 <td class="text-end pe-3">
                                     <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
@@ -131,13 +156,17 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/villa/edit/{{ $item->id }}"
+                                            <a href="/pemilik/villa/show/{{ $item->id }}"
+                                                class="menu-link px-3">Lihat</a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="/pemilik/villa/edit/{{ $item->id }}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/villa/delete/{{ $item->id }}" class="menu-link px-3"
+                                            <a href="/pemilik/villa/delete/{{ $item->id }}" class="menu-link px-3"
                                                 onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">
                                                 Delete
                                             </a>
@@ -147,7 +176,7 @@
                                     <!--end::Menu-->
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

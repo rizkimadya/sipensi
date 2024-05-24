@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Villa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class VillaController extends Controller
 {
@@ -24,64 +27,129 @@ class VillaController extends Controller
         }
     }
 
-    public function indexAdmin(){
-        $villa = null;
-
-        return view('pemilik.villa.index', compact('villa'));
-    }
-
     public function index()
     {
-        $villa = null;
+        $villa = Villa::where('pemilik_id', Auth::user()->id)->latest()->get();
 
         return view('pemilik.villa.index', compact('villa'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'gambar.*' => 'required|image|mimes:jpg,jpeg,png|max:5000', // Note the 'gambar.*' for multiple images
+            'nama_villa' => 'required',
+            'harga' => 'required',
+            'alamat' => 'required',
+            'lokasi' => 'required',
+            'status' => 'required',
+            'kamar_tidur' => 'required',
+            'jumlah_wc' => 'required',
+            'jumlah_cctv' => 'required',
+            'daya_tampung' => 'required',
+        ]);
+
+        // Initialize an array to store the image filenames
+        $gambarPaths = [];
+
+        if ($request->hasFile('gambar')) {
+            foreach ($request->file('gambar') as $image) {
+                $nama_file = time() . "_" . $image->getClientOriginalName();
+                // Simpan file ke direktori storage
+                $image->storeAs('public/fotoVilla', $nama_file);
+                $gambarPaths[] = 'storage/fotoVilla/' . $nama_file;
+            }
+        }
+        $villa = new Villa([
+            'gambar' => json_encode($gambarPaths), // Store image paths as JSON
+            'pemilik_id' => Auth::user()->id,
+            'nama_villa' => $request->nama_villa,
+            'harga' => $request->harga,
+            'alamat' => $request->alamat,
+            'lokasi' => $request->lokasi,
+            'status' => $request->status,
+            'kamar_tidur' => $request->kamar_tidur,
+            'jumlah_wc' => $request->jumlah_wc,
+            'jumlah_cctv' => $request->jumlah_cctv,
+            'daya_tampung' => $request->daya_tampung,
+            'keterangan' => $request->keterangan,
+        ]);
+
+        $villa->save();
+        Alert::success('Success', 'Berhasil menambah villa');
+        return redirect('/pemilik/villa');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Villa $villa)
+
+    public function edit($id)
     {
-        //
+        $villa = Villa::where('id', $id)->firstOrFail();
+        // dd($villa);
+        return view('pemilik.villa.edit', compact('villa'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Villa $villa)
+    public function show($id)
     {
-        //
+        $villa = Villa::where('id', $id)->firstOrFail();
+        // dd($villa);
+        return view('pemilik.villa.show', compact('villa'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Villa $villa)
+    public function update(Request $request, $id)
     {
-        //
+        $villa = Villa::findOrFail($id);
+
+        // Mengambil data yang di-inputkan
+        $data = $request->all();
+
+        // Mengelola gambar
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar-gambar lama
+            $gambarLama = json_decode($villa->gambar, true);
+
+            foreach ($gambarLama as $gambar) {
+                // Hapus gambar dari direktori storage
+                Storage::delete(str_replace('storage/', 'public/', $gambar));
+            }
+
+            // Simpan gambar-gambar yang baru
+            $gambarPaths = [];
+
+            foreach ($request->file('gambar') as $image) {
+                $nama_file = time() . "_" . $image->getClientOriginalName();
+                $tujuan_upload = 'public/fotoVilla'; // Sesuaikan dengan direktori storage
+                $image->storeAs($tujuan_upload, $nama_file);
+
+                // Simpan path gambar baru
+                $gambarPaths[] = 'storage/fotoVilla/' . $nama_file;
+            }
+
+            $data['gambar'] = json_encode($gambarPaths);
+        }
+
+        if ($villa->pemilik_id == Auth::user()->id) {
+            $villa->update($data);
+            Alert::success('Success', 'Berhasil mengupdate data villa');
+        } else {
+            Alert::error('Gagal', 'Gagal mengupdate data villa');
+        }
+        return redirect('/pemilik/villa');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Villa $villa)
+    public function destroy($id)
     {
-        //
+        $villa = Villa::findOrFail($id);
+
+        // Hapus gambar-gambar terkait
+        $gambarPaths = json_decode($villa->gambar, true);
+
+        foreach ($gambarPaths as $gambar) {
+            // Hapus gambar dari direktori storage
+            Storage::delete(str_replace('storage/', 'public/', $gambar));
+        }
+
+        $villa->delete();
+        Alert::success('Success', 'Berhasil menghapus data villa');
+        return redirect('/pemilik/villa');
     }
 }

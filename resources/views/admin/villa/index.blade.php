@@ -8,18 +8,22 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Username Pemilik</th>
+                            <th>Whatsapp</th>
                             <th>Gambar</th>
-                            <th>Kategori Produk</th>
-                            <th>Nama Produk</th>
-                            <th>Berat</th>
-                            <th>Stok</th>
+                            <th>Nama Villa</th>
+                            <th>Harga</th>
+                            <th>Alamat</th>
+                            <th>Status</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($villa as $item)
+                        @foreach ($villa as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->pemilik->username }}</td>
+                                <td>{{ $item->pemilik->no_wa }}</td>
                                 <td>
                                     @php
                                         $images = json_decode($item->gambar);
@@ -29,10 +33,14 @@
                                     @endphp
                                     <img src="/{{ $firstImage }}" alt="img" width="40px">
                                 </td>
-                                <td>{{ $item->kategori->name }}</td>
-                                <td>{{ $item->nama_produk }}</td>
-                                <td>{{ $item->berat }}</td>
-                                <td>{{ $item->stok }}</td>
+                                <td>{{ $item->nama_villa }}</td>
+                                <td>{{ $item->harga }}</td>
+                                <td>{{ $item->alamat }}</td>
+                                @if ($item->status == 'Tersedia')
+                                    <td class="fw-bold text-success">{{ $item->status }}</td>
+                                @else
+                                    <td class="fw-bold text-danger">{{ $item->status }}</td>
+                                @endif
                                 <td class="text-end pe-3">
                                     <a href="#" class="btn btn-light btn-active-light-primary btn-sm"
                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
@@ -51,13 +59,17 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/villa/edit/{{ $item->id }}"
+                                            <a href="/pemilik/villa/show/{{ $item->id }}"
+                                                class="menu-link px-3">Lihat</a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="/pemilik/villa/edit/{{ $item->id }}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/admin/villa/delete/{{ $item->id }}" class="menu-link px-3"
+                                            <a href="/pemilik/villa/delete/{{ $item->id }}" class="menu-link px-3"
                                                 onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">
                                                 Delete
                                             </a>
@@ -67,7 +79,7 @@
                                     <!--end::Menu-->
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
                     </tbody>
                 </table>
             </div>

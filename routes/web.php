@@ -55,6 +55,11 @@ Route::group(['middleware' => ['auth', 'Roles:pemilik']], function () {
 
     // villa
     Route::get('/pemilik/villa', [VillaController::class, 'index']);
+    Route::post('/pemilik/villa', [VillaController::class, 'store']);
+    Route::get('/pemilik/villa/show/{id}', [VillaController::class, 'show']);
+    Route::get('/pemilik/villa/edit/{id}', [VillaController::class, 'edit']);
+    Route::post('/pemilik/villa/update/{id}', [VillaController::class, 'update']);
+    Route::get('/pemilik/villa/delete/{id}', [VillaController::class, 'destroy']);
 
     // transaksi
     Route::get('/pemilik/transaksi', [TransaksiController::class, 'pemilikIndex']);

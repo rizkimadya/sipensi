@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Villa;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
 
     public function indexVilla(){
-        $villa = null;
+        $villa = Villa::latest()->get();
         return view('admin.villa.index', compact('villa'));
     }
 
     public function indexPemilik(){
-        $pemilik = null;
+        $pemilik = User::where('roles', 'pemilik')->latest()->get();
         return view('admin.pemilik.index', compact('pemilik'));
     }
 
     public function indexPenyewa(){
-        $penyewa = null;
+        $penyewa = User::where('roles', 'user')->latest()->get();
         return view('admin.penyewa.index', compact('penyewa'));
     }
 
