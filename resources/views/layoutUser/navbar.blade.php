@@ -20,23 +20,40 @@
 </div>
 
 <!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky">
+<header class="header-area header-sticky shadow">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="{{url('/')}}" style="width: 20%;" class="pt-3">
-                        <img src="{{asset('assets/images/logo.png')}}" alt="logo">
+                    <a href="{{ url('/') }}" style="width: 20%;" class="pt-3">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="{{url('/')}}" class="{{ $title == 'Home' ? 'active' : '' }}">Home</a></li>
-                        <li><a href="{{url('/properties')}}" class="{{ $title == 'Properties' ? 'active' : '' }}">Properties</a></li>
-                        <li><a href="{{url('/contact')}}" class="{{ $title == 'Contact' ? 'active' : '' }}">Contact Us</a></li>
-                        <li><a href="{{url('/login')}}"><i class="fa fa-calendar"></i> Login</a></li>
-                    </ul>
+                    @if (auth()->user() && auth()->user()->roles === 'penyewa')
+                        <ul class="nav">
+                            <li><a href="{{ url('/') }}" class="{{ $title == 'Home' ? 'active' : '' }}">Home</a>
+                            </li>
+                            <li><a href="{{ url('/spk') }}" class="{{ $title == 'SPK' ? 'active' : '' }}">Sistem
+                                Pendukung Keputusan</a>
+                            </li>
+                            <li><a href="{{ url('/villa') }}"
+                                    class="{{ $title == 'Villa' ? 'active' : '' }}">Villa</a></li>
+                            <li><a href="{{ url('/transaksi') }}"
+                                    class="{{ $title == 'Riwayat Reservasi' ? 'active' : '' }}">Riwayat Reservasi</a></li>
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-calendar"></i> Logout</a></li>
+                        </ul>
+                    @else
+                        <ul class="nav">
+                            <li><a href="{{ url('/') }}" class="{{ $title == 'Home' ? 'active' : '' }}">Home</a>
+                            </li>
+                            <li><a href="{{ url('/spk') }}" class="{{ $title == 'SPK' ? 'active' : '' }}">Sistem
+                                    Pendukung Keputusan</a>
+                            </li>
+                            <li><a href="{{ url('/login') }}"><i class="fa fa-calendar"></i> Login</a></li>
+                        </ul>
+                    @endif
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>

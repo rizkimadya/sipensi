@@ -24,7 +24,7 @@
 
 <body>
     @include('sweetalert::alert')
-    
+
     <!-- ***** Preloader Start ***** -->
     <div id="js-preloader" class="js-preloader">
         <div class="preloader-inner">
@@ -64,6 +64,8 @@
     <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
     <script src="{{ asset('assets/js/counter.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+
+    @yield('script')
 
 </body>
 

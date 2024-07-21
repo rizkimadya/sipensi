@@ -39,7 +39,7 @@ class AuthController extends Controller
                 return redirect('/dashboard-pemilik');
             } else {
                 Alert::success('Berhasil Login', 'Selamat Datang ' . $user->username);
-                return redirect('/dashboard-penyewa');
+                return redirect('/');
             }
         }
 

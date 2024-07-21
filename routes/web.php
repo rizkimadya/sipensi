@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
@@ -28,9 +29,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 
 Route::get('/', [UserController::class, 'home']);
-Route::get('/properties', [UserController::class, 'properties']);
-Route::get('/properties/details', [UserController::class, 'detailProperties']);
-Route::get('/contact', [UserController::class, 'contact']);
+Route::get('/spk', [UserController::class, 'spk']);
 
 Route::post('/upload', [VillaController::class, 'upload'])->name('ckeditor.upload');
 
@@ -66,5 +65,13 @@ Route::group(['middleware' => ['auth', 'Roles:pemilik']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'Roles:penyewa']], function () {
-    Route::get('/dashboard-penyewa', [DashboardController::class, 'penyewa']);
+    Route::get('/detail-villa/{id}', [UserController::class, 'detailVilla']);
+
+     // transaksi
+     Route::get('/transaksi', [TransaksiController::class, 'indexUser'])->name("transaksi");
+     Route::get('/transaksi/{snapToken}', [CheckoutController::class, 'detailCheckout']);
+
+     // checkout
+     Route::post('/checkout', [CheckoutController::class, 'process'])->name("checkout-process");
+     Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'successPay']);
 });

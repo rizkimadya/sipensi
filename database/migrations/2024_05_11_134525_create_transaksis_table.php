@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->json('gambar');
-            $table->string('nama_villa');
-            $table->string('harga');
-            $table->string('berat');
-            $table->string('stok');
-            $table->text('deskripsi');
-            $table->string('jumlah_terjual')->nullable();
-            $table->string('rating')->nullable();
-            $table->string('no_wa')->nullable();
-            $table->string('link_shopee')->nullable();
-            $table->string('link_tokopedia')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('villa_id');
+            $table->integer('price');
+            $table->enum('status', ['pending', 'success', 'failed']);
+            $table->string('snap_token')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('villa_id')->references('id')->on('villas')->onDelete('cascade');
         });
     }
 

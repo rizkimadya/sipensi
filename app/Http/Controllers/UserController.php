@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Villa;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function home()
     {
-        return view('user.home');
+        $villa = Villa::latest()->take(3)->get();
+        return view('user.home', compact('villa'));
     }
 
-    public function properties()
+    public function spk()
     {
-        return view('user.properties');
+        return view('user.spk');
     }
 
-    public function detailProperties()
-    {
-        return view('user.details');
-    }
+    public function detailVilla($id){
+        $detail = Villa::findOrFail($id);
 
-    public function contact()
-    {
-        return view('user.contact');
+        return view('user.detailvilla', compact('detail'));
     }
 }
