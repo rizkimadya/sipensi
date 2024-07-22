@@ -77,7 +77,7 @@ class VillaController extends Controller
 
         $villa->save();
         Alert::success('Success', 'Berhasil menambah villa');
-        return redirect('/pemilik/villa');
+        return redirect('/admin/villa');
     }
 
 
@@ -85,14 +85,14 @@ class VillaController extends Controller
     {
         $villa = Villa::where('id', $id)->firstOrFail();
         // dd($villa);
-        return view('pemilik.villa.edit', compact('villa'));
+        return view('admin.villa.edit', compact('villa'));
     }
 
     public function show($id)
     {
         $villa = Villa::where('id', $id)->firstOrFail();
         // dd($villa);
-        return view('pemilik.villa.show', compact('villa'));
+        return view('admin.villa.show', compact('villa'));
     }
 
     public function update(Request $request, $id)
@@ -133,7 +133,7 @@ class VillaController extends Controller
         } else {
             Alert::error('Gagal', 'Gagal mengupdate data villa');
         }
-        return redirect('/pemilik/villa');
+        return redirect('/admin/villa');
     }
 
     public function destroy($id)
@@ -150,6 +150,6 @@ class VillaController extends Controller
 
         $villa->delete();
         Alert::success('Success', 'Berhasil menghapus data villa');
-        return redirect('/pemilik/villa');
+        return redirect('/admin/villa');
     }
 }

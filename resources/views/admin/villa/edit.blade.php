@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card table-responsive p-md-4 p-2">
-                <form action="/pemilik/villa/update/{{ $villa->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/villa/update/{{ $villa->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -70,7 +70,7 @@
                         <textarea name="keterangan" id="editor" style="height: 100px; color:#000;">{{ $villa->keterangan }}</textarea>
                     </div>
                     <div class="mt-5 justify-content-center d-flex gap-2">
-                        <a href="{{ url('/pemilik/villa') }}" class="btn btn-secondary">Kembali</a>
+                        <a href="{{ url('/admin/villa') }}" class="btn btn-secondary">Kembali</a>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>

@@ -3,7 +3,12 @@
 @section('contentUser')
     <div class="main-banner mt-5 wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s" style="height: 40vh;">
         <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-            <div class="container">
+            <div class="container mt-md-5 mt-3 spk">
+                <div class="col-12 mb-5">
+                    <p class="fs-4 fw-semibold">Riwayat Reservasi</p>
+                    <p class="">List Riwayat Reservasi Villa</p>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <h6>Transaction</h6>

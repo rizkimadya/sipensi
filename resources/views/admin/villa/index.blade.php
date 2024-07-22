@@ -1,5 +1,106 @@
 @extends('LayoutAdmin.app', ['title' => 'Villa'])
 
+@section('modal-button')
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-sm mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <span class="svg-icon svg-icon-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
+                    transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+            </svg>
+        </span>
+        Tambah Villa
+    </button>
+@endsection
+
+@section('modal')
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Villa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url('/admin/villa') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div style="max-height: 70vh; overflow: auto">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gambar" class="form-label">Gambar <i>*pilih banyak gambar</i></label>
+                                    <input type="file" class="form-control" name="gambar[]" required id="gambar"
+                                        multiple accept="image/*">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama_villa" class="form-label">Nama Villa</label>
+                                    <input type="text" class="form-control" name="nama_villa" id="nama_villa"
+                                        required placeholder="Masukkan Nama Villa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="harga" class="form-label">Harga Sewa Villa</label>
+                                    <input type="number" class="form-control" name="harga" id="harga" required
+                                        placeholder="Masukkan Harga Sewa Villa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat Villa</label>
+                                    <input type="text" class="form-control" name="alamat" id="alamat" required
+                                        placeholder="Masukkan Alamat Villa">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lokasi" class="form-label">Link Maps Lokasi Villa</label>
+                                    <input type="link" class="form-control" name="lokasi" id="lokasi" required
+                                        placeholder="Masukkan Link Maps Lokasi Villa">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select name="status" id="status" class="form-select" required>
+                                        <option value="" selected disabled>Pilih Status</option>
+                                        <option value="Tersedia">Tersedia</option>
+                                        <option value="Terisi">Terisi</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="kamar_tidur" class="form-label">Jumlah Kamar Tidur</label>
+                                    <input type="number" class="form-control" name="kamar_tidur" id="kamar_tidur" required
+                                        placeholder="Masukkan Jumlah Kamar Tidur" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jumlah_wc" class="form-label">Jumlah Kamar Mandi/Toilet</label>
+                                    <input type="number" class="form-control" name="jumlah_wc" id="jumlah_wc" required
+                                        placeholder="Masukkan Jumlah Kamar Mandi/Toilet" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jumlah_cctv" class="form-label">Jumlah CCTV</label>
+                                    <input type="number" class="form-control" name="jumlah_cctv" id="jumlah_cctv" required
+                                        placeholder="Masukkan Jumlah CCTV" value="0">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="daya_tampung" class="form-label">Jumlah Daya Tampung</label>
+                                    <input type="number" class="form-control" name="daya_tampung" id="daya_tampung" required
+                                        placeholder="Masukkan Jumlah Daya Tampung" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="keterangan" class="form-label">Keterangan</label>
+                            <textarea name="keterangan" id="editor" style="height: 100px; color:#000;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center d-flex gap-2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -59,17 +160,17 @@
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/pemilik/villa/show/{{ $item->id }}"
+                                            <a href="/admin/villa/show/{{ $item->id }}"
                                                 class="menu-link px-3">Lihat</a>
                                         </div>
                                         <div class="menu-item px-3">
-                                            <a href="/pemilik/villa/edit/{{ $item->id }}"
+                                            <a href="/admin/villa/edit/{{ $item->id }}"
                                                 class="menu-link px-3">Edit</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="/pemilik/villa/delete/{{ $item->id }}" class="menu-link px-3"
+                                            <a href="/admin/villa/delete/{{ $item->id }}" class="menu-link px-3"
                                                 onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">
                                                 Delete
                                             </a>

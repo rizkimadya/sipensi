@@ -14,16 +14,22 @@
                         @endif
                     </span>
                     <h3>{{ 'Rp ' . number_format($detail->harga, 0, ',', '.') }} / Hari</h3>
-                    <div class="mt-4">
-                        <form action="{{ url('/checkout') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                            <input type="hidden" name="villa_id" value="{{ $detail->id }}">
-                            <input type="hidden" name="status" value="pending">
-                            <input type="hidden" name="price" value="{{$detail->harga}}">
-                            <button class="btn btn-success px-4" type="submit">Reservasi Villa</button>
-                        </form>
-                    </div>
+                    @if ($detail->status == 'Tersedia')
+                        <div class="mt-4">
+                            <form action="{{ url('/checkout') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                <input type="hidden" name="villa_id" value="{{ $detail->id }}">
+                                <input type="hidden" name="status" value="pending">
+                                <input type="hidden" name="price" value="{{$detail->harga}}">
+                                <button class="btn btn-success px-4" type="submit">Reservasi Villa</button>
+                            </form>
+                        </div>
+                        @else
+                        <div class="mt-4">
+                            <button disabled class="btn btn-danger px-4" type="submit">Villa Terisi</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

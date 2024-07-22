@@ -38,6 +38,11 @@ Route::group(['middleware' => ['auth', 'Roles:admin']], function () {
 
     // villa
     Route::get('/admin/villa', [AdminController::class, 'indexVilla']);
+    Route::post('/admin/villa', [VillaController::class, 'store']);
+    Route::get('/admin/villa/show/{id}', [VillaController::class, 'show']);
+    Route::get('/admin/villa/edit/{id}', [VillaController::class, 'edit']);
+    Route::post('/admin/villa/update/{id}', [VillaController::class, 'update']);
+    Route::get('/admin/villa/delete/{id}', [VillaController::class, 'destroy']);
 
     // pemilik villa
     Route::get('/admin/pemilik-villa', [AdminController::class, 'indexPemilik']);
@@ -54,17 +59,13 @@ Route::group(['middleware' => ['auth', 'Roles:pemilik']], function () {
 
     // villa
     Route::get('/pemilik/villa', [VillaController::class, 'index']);
-    Route::post('/pemilik/villa', [VillaController::class, 'store']);
-    Route::get('/pemilik/villa/show/{id}', [VillaController::class, 'show']);
-    Route::get('/pemilik/villa/edit/{id}', [VillaController::class, 'edit']);
-    Route::post('/pemilik/villa/update/{id}', [VillaController::class, 'update']);
-    Route::get('/pemilik/villa/delete/{id}', [VillaController::class, 'destroy']);
 
     // transaksi
     Route::get('/pemilik/transaksi', [TransaksiController::class, 'pemilikIndex']);
 });
 
 Route::group(['middleware' => ['auth', 'Roles:penyewa']], function () {
+    Route::get('/villa', [UserController::class, 'villa']);
     Route::get('/detail-villa/{id}', [UserController::class, 'detailVilla']);
 
      // transaksi

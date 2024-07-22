@@ -1,7 +1,7 @@
 @extends('LayoutAdmin.app', ['title' => 'Villa'])
 
 @section('modal-button')
-    <a href="{{ url('/pemilik/villa') }}" class="btn btn-danger">Kembali</a>
+    <a href="{{ url('/admin/villa') }}" class="btn btn-danger">Kembali</a>
 @endsection
 
 @section('content')

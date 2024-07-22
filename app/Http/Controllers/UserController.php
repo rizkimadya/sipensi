@@ -13,6 +13,12 @@ class UserController extends Controller
         return view('user.home', compact('villa'));
     }
 
+    public function villa()
+    {
+        $villa = Villa::latest()->get();
+        return view('user.villa', compact('villa'));
+    }
+
     public function spk()
     {
         return view('user.spk');

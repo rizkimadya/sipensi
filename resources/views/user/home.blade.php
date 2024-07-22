@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 @foreach ($villa as $item)
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4">
                         <div class="item">
                             <a href="{{ url('/detail-villa/' . $item->id) }}">
                                 @php
@@ -46,7 +46,11 @@
                                     <img src="/{{ $firstImage }}" alt="Villa Image">
 
                             </a>
-                            <span class="category">{{ $item->status }}</span>
+                            @if ($item->status == 'Tersedia')
+                                <span class="category text-success">{{ $item->status }}</span>
+                            @else
+                                <span class="category text-danger">{{ $item->status }}</span>
+                            @endif
                             <h6>{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }}</h6>
                             <h4><a href="{{ url('/detail-villa/' . $item->id) }}">{{ $item->nama_villa }}</a></h4>
                             <ul>
@@ -61,6 +65,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="col-12 d-flex">
+                    <a href="{{url('/villa')}}" class="btn btn-dark mx-auto fw-blod" style="border-radius: 34px; font-size:14px; padding:12px 36px;">Lihat Semua Villa</a>
+                </div>
             </div>
         </div>
     </div>
