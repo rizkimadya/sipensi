@@ -29,7 +29,8 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 
 Route::get('/', [UserController::class, 'home']);
-Route::get('/spk', [UserController::class, 'spk']);
+Route::get('/spk', [UserController::class, 'spkForm'])->name('spk.form');
+Route::post('/spk', [UserController::class, 'spk'])->name('spk');
 
 Route::post('/upload', [VillaController::class, 'upload'])->name('ckeditor.upload');
 
