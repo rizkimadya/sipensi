@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Villa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +63,7 @@ class VillaController extends Controller
         }
         $villa = new Villa([
             'gambar' => json_encode($gambarPaths), // Store image paths as JSON
-            'pemilik_id' => Auth::user()->id,
+            'pemilik_id' => $request->pemilik_id,
             'nama_villa' => $request->nama_villa,
             'harga' => $request->harga,
             'alamat' => $request->alamat,
@@ -84,15 +85,19 @@ class VillaController extends Controller
     public function edit($id)
     {
         $villa = Villa::where('id', $id)->firstOrFail();
+        $pemilik = User::where('roles', 'pemilik')->latest()->get();
+
         // dd($villa);
-        return view('admin.villa.edit', compact('villa'));
+        return view('admin.villa.edit', compact('villa', 'pemilik'));
     }
 
     public function show($id)
     {
         $villa = Villa::where('id', $id)->firstOrFail();
+        $pemilik = User::where('roles', 'pemilik')->latest()->get();
+
         // dd($villa);
-        return view('admin.villa.show', compact('villa'));
+        return view('admin.villa.show', compact('villa', 'pemilik'));
     }
 
     public function update(Request $request, $id)

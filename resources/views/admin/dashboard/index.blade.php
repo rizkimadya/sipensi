@@ -5,7 +5,7 @@
         <div class="col-md-3">
             <div class="card p-md-5 p-4 mb-md-5 mb-3">
                 <div class="d-flex align-items-center">
-                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">1</span>
+                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">{{$villa}}</span>
                     <span class="menu-icon ms-auto">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -34,7 +34,7 @@
         <div class="col-md-3">
             <div class="card p-md-5 p-4 mb-md-5 mb-3">
                 <div class="d-flex align-items-center">
-                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">2</span>
+                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">{{$pemilik}}</span>
                     <span class="menu-icon ms-auto">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -58,7 +58,7 @@
         <div class="col-md-3">
             <div class="card p-md-5 p-4 mb-md-5 mb-3">
                 <div class="d-flex align-items-center">
-                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">3</span>
+                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">{{$penyewa}}</span>
                     <span class="menu-icon ms-auto">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -81,7 +81,7 @@
         <div class="col-md-3">
             <div class="card p-md-5 p-4 mb-md-5 mb-3">
                 <div class="d-flex align-items-center">
-                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">4</span>
+                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">{{$transaksi}}</span>
                     <span class="menu-icon ms-auto">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen002.svg-->
                         <span class="svg-icon svg-icon-2">

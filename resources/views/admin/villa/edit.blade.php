@@ -7,6 +7,16 @@
                 <form action="/admin/villa/update/{{ $villa->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="pemilik_id" class="form-label">Pilih Pemilik</label>
+                                <select name="pemilik_id" id="pemilik_id" name="pemilik_id" class="form-select">
+                                    @foreach ($pemilik as $item)
+                                        <option value="{{ $item->id }}" {{$item->id == $villa->pemilik_id ? 'selected' : ''}}>{{ $item->nama_lengkap }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="gambar" class="form-label">Gambar <i>*pilih banyak gambar</i></label>

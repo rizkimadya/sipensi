@@ -15,89 +15,106 @@
 @endsection
 
 @section('modal')
+    @php
+        use App\Models\User; // Import model User
+
+        // Ambil data pemilik
+        $pemilik = User::where('roles', 'pemilik')->latest()->get();
+    @endphp
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Villa</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="{{ url('/admin/villa') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div style="max-height: 70vh; overflow: auto">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="gambar" class="form-label">Gambar <i>*pilih banyak gambar</i></label>
-                                    <input type="file" class="form-control" name="gambar[]" required id="gambar"
-                                        multiple accept="image/*">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Villa</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ url('/admin/villa') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div style="max-height: 70vh; overflow: auto">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="pemilik_id" class="form-label">Pilih Pemilik</label>
+                                        <select name="pemilik_id" id="pemilik_id" name="pemilik_id" class="form-select">
+                                            <option value="" selected disabled>Pilih Pemilik</option>
+                                            @foreach ($pemilik as $item)
+                                                <option value="{{ $item->id }}">{{ $item->nama_lengkap }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="nama_villa" class="form-label">Nama Villa</label>
-                                    <input type="text" class="form-control" name="nama_villa" id="nama_villa"
-                                        required placeholder="Masukkan Nama Villa">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="gambar" class="form-label">Gambar <i>*pilih banyak gambar</i></label>
+                                        <input type="file" class="form-control" name="gambar[]" required id="gambar"
+                                            multiple accept="image/*">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama_villa" class="form-label">Nama Villa</label>
+                                        <input type="text" class="form-control" name="nama_villa" id="nama_villa"
+                                            required placeholder="Masukkan Nama Villa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="harga" class="form-label">Harga Sewa Villa</label>
+                                        <input type="number" class="form-control" name="harga" id="harga" required
+                                            placeholder="Masukkan Harga Sewa Villa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat Villa</label>
+                                        <input type="text" class="form-control" name="alamat" id="alamat" required
+                                            placeholder="Masukkan Alamat Villa">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lokasi" class="form-label">Link Maps Lokasi Villa</label>
+                                        <input type="link" class="form-control" name="lokasi" id="lokasi" required
+                                            placeholder="Masukkan Link Maps Lokasi Villa">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="harga" class="form-label">Harga Sewa Villa</label>
-                                    <input type="number" class="form-control" name="harga" id="harga" required
-                                        placeholder="Masukkan Harga Sewa Villa">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat Villa</label>
-                                    <input type="text" class="form-control" name="alamat" id="alamat" required
-                                        placeholder="Masukkan Alamat Villa">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="lokasi" class="form-label">Link Maps Lokasi Villa</label>
-                                    <input type="link" class="form-control" name="lokasi" id="lokasi" required
-                                        placeholder="Masukkan Link Maps Lokasi Villa">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">Status</label>
+                                        <select name="status" id="status" class="form-select" required>
+                                            <option value="" selected disabled>Pilih Status</option>
+                                            <option value="Tersedia">Tersedia</option>
+                                            <option value="Terisi">Terisi</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kamar_tidur" class="form-label">Jumlah Kamar Tidur</label>
+                                        <input type="number" class="form-control" name="kamar_tidur" id="kamar_tidur"
+                                            required placeholder="Masukkan Jumlah Kamar Tidur" value="0">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="jumlah_wc" class="form-label">Jumlah Kamar Mandi/Toilet</label>
+                                        <input type="number" class="form-control" name="jumlah_wc" id="jumlah_wc"
+                                            required placeholder="Masukkan Jumlah Kamar Mandi/Toilet" value="0">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="jumlah_cctv" class="form-label">Jumlah CCTV</label>
+                                        <input type="number" class="form-control" name="jumlah_cctv" id="jumlah_cctv"
+                                            required placeholder="Masukkan Jumlah CCTV" value="0">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="daya_tampung" class="form-label">Jumlah Daya Tampung</label>
+                                        <input type="number" class="form-control" name="daya_tampung" id="daya_tampung"
+                                            required placeholder="Masukkan Jumlah Daya Tampung" value="0">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select name="status" id="status" class="form-select" required>
-                                        <option value="" selected disabled>Pilih Status</option>
-                                        <option value="Tersedia">Tersedia</option>
-                                        <option value="Terisi">Terisi</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="kamar_tidur" class="form-label">Jumlah Kamar Tidur</label>
-                                    <input type="number" class="form-control" name="kamar_tidur" id="kamar_tidur" required
-                                        placeholder="Masukkan Jumlah Kamar Tidur" value="0">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jumlah_wc" class="form-label">Jumlah Kamar Mandi/Toilet</label>
-                                    <input type="number" class="form-control" name="jumlah_wc" id="jumlah_wc" required
-                                        placeholder="Masukkan Jumlah Kamar Mandi/Toilet" value="0">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jumlah_cctv" class="form-label">Jumlah CCTV</label>
-                                    <input type="number" class="form-control" name="jumlah_cctv" id="jumlah_cctv" required
-                                        placeholder="Masukkan Jumlah CCTV" value="0">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="daya_tampung" class="form-label">Jumlah Daya Tampung</label>
-                                    <input type="number" class="form-control" name="daya_tampung" id="daya_tampung" required
-                                        placeholder="Masukkan Jumlah Daya Tampung" value="0">
-                                </div>
+                            <div class="mb-3">
+                                <label for="keterangan" class="form-label">Keterangan</label>
+                                <textarea name="keterangan" id="editor" style="height: 100px; color:#000;"></textarea>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea name="keterangan" id="editor" style="height: 100px; color:#000;"></textarea>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer justify-content-center d-flex gap-2">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+                    <div class="modal-footer justify-content-center d-flex gap-2">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 
