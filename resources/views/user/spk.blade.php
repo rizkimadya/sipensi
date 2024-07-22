@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-12 mb-5">
                 <p class="fs-4 fw-semibold">Dapatkan Villa Yang Sesuai</p>
-                <p class="">Form Sistem Pendukung Keputusan</p>
+                <p>Form Sistem Pendukung Keputusan</p>
             </div>
 
             <div class="col-12">
-                <form action="{{ route('spk') }}" method="POST">
+                <form id="spk-form" action="{{ route('spk') }}#hasil" method="POST">
                     @csrf
                     <!-- Kategori Harga -->
                     <div class="row mb-3">
@@ -81,51 +81,71 @@
                     <!-- Submit Button -->
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-dark mx-auto fw-blod" style="border-radius: 34px; font-size:14px; padding:12px 36px;">Cari Villa</button>
+                            <button type="submit" class="btn btn-dark mx-auto fw-bold"
+                                style="border-radius: 34px; font-size:14px; padding:12px 36px;">
+                                Cari Villa
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
 
-            @if(isset($topVillas))
-            <div class="col-12 mt-5" id="hasil">
-                <h4>Villa Rekomendasi</h4>
-                <div class="row">
-                    @foreach($topVillas as $index => $result)
-                        <div class="col-lg-4 mb-4">
-                            <div class="item">
-                                <a href="{{ url('/detail-villa/' . $result['villa']->id) }}">
-                                    @php
-                                        $images = json_decode($result['villa']->gambar);
-                                        $firstImage = is_array($images) && count($images) > 0 ? $images[0] : '';
-                                    @endphp
-                                    <img src="/{{ $firstImage }}" alt="Villa Image" class="img-fluid">
-                                </a>
-                                @if ($result['villa']->status == 'Tersedia')
-                                    <span class="category text-success">{{ $result['villa']->status }}</span>
-                                @else
-                                    <span class="category text-danger">{{ $result['villa']->status }}</span>
-                                @endif
-                                <h6>{{ 'Rp ' . number_format($result['villa']->harga, 0, ',', '.') }}</h6>
-                                <h4><a href="{{ url('/detail-villa/' . $result['villa']->id) }}">{{ $result['villa']->nama_villa }}</a></h4>
-                                <ul>
-                                    <li>Kamar Tidur: <span>{{ $result['villa']->kamar_tidur }}</span></li>
-                                    <li>Kamar Mandi: <span>{{ $result['villa']->jumlah_wc }}</span></li>
-                                    <li>CCTV: <span>{{ $result['villa']->jumlah_cctv }}</span></li>
-                                    <li>Daya Tampung: <span>{{ $result['villa']->daya_tampung }}</span></li>
-                                </ul>
-                                <div class="main-button">
-                                    <a href="{{ url('/detail-villa/' . $result['villa']->id) }}">Jadwalkan Kunjungan</a>
-                                </div>
-                                <div class="ranking">
-                                    <span class="badge bg-primary">Ranking {{ $index + 1 }}</span>
+            @if (isset($topVillas))
+                <div class="col-12 pt-5 properties" id="hasil">
+                    <h4 class="mb-3">Villa Rekomendasi</h4>
+                    <div class="row">
+                        @foreach ($topVillas as $index => $result)
+                            <div class="col-lg-4 mb-4">
+                                <div class="item">
+                                    <div class="ranking mb-3 mx-auto">
+                                        <span class="badge bg-primary">Ranking {{ $index + 1 }}</span>
+                                    </div>
+                                    <a href="{{ url('/detail-villa/' . $result['villa']->id) }}">
+                                        @php
+                                            $images = json_decode($result['villa']->gambar);
+                                            $firstImage = is_array($images) && count($images) > 0 ? $images[0] : '';
+                                        @endphp
+                                        <img src="/{{ $firstImage }}" alt="Villa Image" class="img-fluid">
+                                    </a>
+                                    @if ($result['villa']->status == 'Tersedia')
+                                        <span class="category text-success">{{ $result['villa']->status }}</span>
+                                    @else
+                                        <span class="category text-danger">{{ $result['villa']->status }}</span>
+                                    @endif
+                                    <h6>{{ 'Rp ' . number_format($result['villa']->harga, 0, ',', '.') }}</h6>
+                                    <h4><a
+                                            href="{{ url('/detail-villa/' . $result['villa']->id) }}">{{ $result['villa']->nama_villa }}</a>
+                                    </h4>
+                                    <ul>
+                                        <li>Kamar Tidur: <span>{{ $result['villa']->kamar_tidur }}</span></li>
+                                        <li>Kamar Mandi: <span>{{ $result['villa']->jumlah_wc }}</span></li>
+                                        <li>CCTV: <span>{{ $result['villa']->jumlah_cctv }}</span></li>
+                                        <li>Daya Tampung: <span>{{ $result['villa']->daya_tampung }}</span></li>
+                                    </ul>
+                                    <div class="main-button">
+                                        <a href="{{ url('/detail-villa/' . $result['villa']->id) }}">Jadwalkan
+                                            Kunjungan</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        @endif
+            @endif
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the URL contains the hash #hasil
+            if (window.location.hash === '#hasil') {
+                // Scroll to the element with the id #hasil
+                document.querySelector('#hasil').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
 @endsection

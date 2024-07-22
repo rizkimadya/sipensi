@@ -60,7 +60,7 @@
                                 <li>Data Tampung: <span>{{ $item->daya_tampung }}</span></li>
                             </ul>
                             <div class="main-button">
-                                <a href="{{ url('/detail-villa/' . $item->id) }}">Schedule a visit</a>
+                                <a href="{{ url('/detail-villa/' . $item->id) }}">Jadwalkan Kunjungan</a>
                             </div>
                         </div>
                     </div>
