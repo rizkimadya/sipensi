@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function indexPenyewa()
     {
-        $penyewa = User::where('roles', 'user')->latest()->get();
+        $penyewa = User::where('roles', 'penyewa')->latest()->get();
         return view('admin.penyewa.index', compact('penyewa'));
     }
 

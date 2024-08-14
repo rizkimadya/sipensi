@@ -744,15 +744,15 @@ Banner Style
 }
 
 .main-banner .item-1 {
-  background-image: url(../images/banner-01.jpg);
+  background-image: url(../images/banner-01.jpeg);
 }
 
 .main-banner .item-2 {
-  background-image: url(../images/banner-02.jpg);
+  background-image: url(../images/banner-02.jpeg);
 }
 
 .main-banner .item-3 {
-  background-image: url(../images/banner-03.jpg);
+  background-image: url(../images/banner-03.jpeg);
 }
 
 .main-banner .item span.category {
@@ -772,14 +772,16 @@ Banner Style
 }
 
 .main-banner .item h2 {
-  font-size: 62px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #fff;
-  line-height: 72px;
-  width: 50%;
-  margin-bottom: 0px;
-}
+    font-size: 62px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 72px;
+    width: 50%;
+    margin-bottom: 0px;
+  }
 
 .main-banner .owl-dots {
   position: absolute;

@@ -5,19 +5,19 @@
         <div class="owl-carousel owl-banner">
             <div class="item item-1">
                 <div class="header-text">
-                    <span class="category">Villa, <em>Malino</em></span>
-                    <h2>Selamat Datang Di Website<br>Reservasi Villa</h2>
+                    <span class="category">Villa Bukit Lereng <em>Malino</em></span>
+                    <h2>Selamat Datang Di Website<br>Reservasi dan Penyewaan Villa</h2>
                 </div>
             </div>
             <div class="item item-2">
                 <div class="header-text">
-                    <span class="category">Villa, <em>Malino</em></span>
+                    <span class="category">Villa Bukit Lereng <em>Malino</em></span>
                     <h2>Dapatkan Villa Terbaik Untuk Keluarga</h2>
                 </div>
             </div>
             <div class="item item-3">
                 <div class="header-text">
-                    <span class="category">Villa, <em>Malino</em></span>
+                    <span class="category">Villa Bukit Lereng <em>Malino</em></span>
                     <h2>Segera Lakukan Reservasi</h2>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-4 offset-lg-4">
                     <div class="section-heading text-center">
-                        <h6>| Villa</h6>
+                        <h6>Pilihan Villa</h6>
                         <h2>Dapatkan Villa Terbaik Untuk Keluarga</h2>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                                 <li>Kamar Tidur: <span>{{ $item->kamar_tidur }}</span></li>
                                 <li>Kamar Mandi: <span>{{ $item->jumlah_wc }}</span></li>
                                 <li>CCTV: <span>{{ $item->jumlah_cctv }}</span></li>
-                                <li>Data Tampung: <span>{{ $item->daya_tampung }}</span></li>
+                                <li>Daya Tampung: <span>{{ $item->daya_tampung }}</span></li>
                             </ul>
                             <div class="main-button">
                                 <a href="{{ url('/detail-villa/' . $item->id) }}">Jadwalkan Kunjungan</a>
@@ -99,13 +99,13 @@
                         <div class="col-lg-6">
                             <div class="item phone">
                                 <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                                <h6>010-020-0340<br><span>Phone Number</span></h6>
+                                <h6>088245906437<br><span>Phone Number</span></h6>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="item email">
                                 <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                                <h6>info@villa.co<br><span>Business Email</span></h6>
+                                <h6>villabukitlereng@gmail.com<br><span>Business Email</span></h6>
                             </div>
                         </div>
                     </div>

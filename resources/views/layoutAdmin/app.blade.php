@@ -7,16 +7,16 @@
     <title>{{ $title }}</title>
     <meta charset="utf-8" />
     <meta name="description"
-        content="Website Villa Malino" />
+        content="Website Villa Bukit Lereng Malono" />
     <meta name="keywords"
-        content="Website Villa Malino" />
+        content="Website Villa Bukit Lereng Malono" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title"
-        content="Website Villa Malino" />
+        content="Website Villa Bukit Lereng Malono" />
     <meta property="og:url" content="https://sipensi.my.id/" />
-    <meta property="og:site_name" content="Website Villa Malino" />
+    <meta property="og:site_name" content="Website Villa Bukit Lereng Malono" />
     <link rel="canonical" href="https://sipensi.my.id/" />
     <link rel="shortcut icon" href="{{ asset('assets2/media/logos/favicon.ico') }}" />
     <!--begin Fonts-->

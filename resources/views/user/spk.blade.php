@@ -17,11 +17,10 @@
                             <label class="form-label" for="harga">Harga Tarif Sewa Villa</label>
                             <select id="harga" name="harga" class="form-select" required>
                                 <option value="">Pilih Kategori Harga</option>
-                                <option value="1">Kategori 1 (300k - 400k)</option>
-                                <option value="2">Kategori 2 (500k - 600k)</option>
-                                <option value="3">Kategori 3 (700k - 800k)</option>
-                                <option value="4">Kategori 4 (900k - 1M)</option>
-                                <option value="5">Kategori 5 (>1M)</option>
+                                <option value="1">Kategori 1 (800.000 - 1.000,000)</option>
+                                <option value="2">Kategori 2 (1.100,000 - 1.300.000,00)</option>
+                                <option value="3">Kategori 3 (1.400.000,00 - 1.500.000,00)</option>
+
                             </select>
                         </div>
 
@@ -33,8 +32,7 @@
                                 <option value="1">Kategori 1 (1 Kamar)</option>
                                 <option value="2">Kategori 2 (2 Kamar)</option>
                                 <option value="3">Kategori 3 (3 Kamar)</option>
-                                <option value="4">Kategori 4 (4 Kamar)</option>
-                                <option value="5">Kategori 5 (>4 Kamar)</option>
+
                             </select>
                         </div>
 
@@ -43,11 +41,10 @@
                             <label class="form-label" for="daya_tampung">Daya Tampung</label>
                             <select id="daya_tampung" name="daya_tampung" class="form-select" required>
                                 <option value="">Pilih Kategori Daya Tampung</option>
-                                <option value="1">Kategori 1 (1-2 Orang)</option>
-                                <option value="2">Kategori 2 (3-4 Orang)</option>
-                                <option value="3">Kategori 3 (5-6 Orang)</option>
-                                <option value="4">Kategori 4 (7-8 Orang)</option>
-                                <option value="5">Kategori 5 (>8 Orang)</option>
+                                <option value="1">Kategori 1 (8 Orang)</option>
+                                <option value="2">Kategori 2 (10 Orang)</option>
+                                <option value="3">Kategori 3 (15 Orang)</option>
+
                             </select>
                         </div>
 
@@ -60,7 +57,7 @@
                                 <option value="2">Kategori 2 (2 WC)</option>
                                 <option value="3">Kategori 3 (3 WC)</option>
                                 <option value="4">Kategori 4 (4 WC)</option>
-                                <option value="5">Kategori 5 (>4 WC)</option>
+
                             </select>
                         </div>
 
@@ -71,9 +68,8 @@
                                 <option value="">Pilih Kategori Jumlah CCTV</option>
                                 <option value="1">Kategori 1 (1 CCTV)</option>
                                 <option value="2">Kategori 2 (2 CCTV)</option>
-                                <option value="3">Kategori 3 (3 CCTV)</option>
-                                <option value="4">Kategori 4 (4 CCTV)</option>
-                                <option value="5">Kategori 5 (>4 CCTV)</option>
+                                <option value="3">Kategori 3 (0 CCTV)</option>
+
                             </select>
                         </div>
                     </div>
