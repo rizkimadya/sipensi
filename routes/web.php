@@ -65,9 +65,10 @@ Route::group(['middleware' => ['auth', 'Roles:pemilik']], function () {
     Route::get('/pemilik/transaksi', [TransaksiController::class, 'pemilikIndex']);
 });
 
+Route::get('/detail-villa/{id}', [UserController::class, 'detailVilla']);
+
 Route::group(['middleware' => ['auth', 'Roles:penyewa']], function () {
     Route::get('/villa', [UserController::class, 'villa']);
-    Route::get('/detail-villa/{id}', [UserController::class, 'detailVilla']);
 
      // transaksi
      Route::get('/transaksi', [TransaksiController::class, 'indexUser'])->name("transaksi");

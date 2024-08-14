@@ -18,14 +18,15 @@
                         <div class="mt-4">
                             <form action="{{ url('/checkout') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                <input type="hidden" name="user_id"
+                                    value="{{ auth()->check() ? auth()->user()->id : '' }}">
                                 <input type="hidden" name="villa_id" value="{{ $detail->id }}">
                                 <input type="hidden" name="status" value="pending">
-                                <input type="hidden" name="price" value="{{$detail->harga}}">
+                                <input type="hidden" name="price" value="{{ $detail->harga }}">
                                 <button class="btn btn-success px-4" type="submit">Reservasi Villa</button>
                             </form>
                         </div>
-                        @else
+                    @else
                         <div class="mt-4">
                             <button disabled class="btn btn-danger px-4" type="submit">Villa Terisi</button>
                         </div>
@@ -88,7 +89,8 @@
                     <div class="info-table">
                         <ul>
                             <li>
-                                <a href="{{$detail->lokasi}}" class="btn w-100" style="background:#E3B697; color:#fff;" target="_blank">Lihat Lokasi</a>
+                                <a href="{{ $detail->lokasi }}" class="btn w-100" style="background:#E3B697; color:#fff;"
+                                    target="_blank">Lihat Lokasi</a>
                             </li>
                             <li>
                                 <h4>{{ $detail->kamar_tidur }}<br><span>Kamar Tidur</span></h4>
