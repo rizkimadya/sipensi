@@ -1,4 +1,4 @@
-@extends('LayoutAdmin.app', ['title' => 'Transaksi'])
+@extends('layoutAdmin.app', ['title' => 'Transaksi'])
 
 @section('content')
     <div class="row">
@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($transaksi as $item)
+                        @foreach ($transaksi as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->pemilik_username }}</td>
@@ -35,11 +35,7 @@
                                 </td>
                                 <td>{{ $item->created_at }}</td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center">no a item</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
             </div>

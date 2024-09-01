@@ -24,7 +24,6 @@ class TransaksiController extends Controller
         $transaksi = Transaksi::whereIn('villa_id', $villa_ids)
             ->latest()
             ->get();
-        // dd($transaksi);
         // Kirim data transaksi ke view
         return view('pemilik.transaksi.index', compact('transaksi'));
     }

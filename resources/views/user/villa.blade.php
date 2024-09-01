@@ -12,7 +12,7 @@
                 <div class="row">
                     @foreach ($villa as $item)
                         <div class="col-lg-4">
-                            <div class="item">
+                            <div class="item shadow">
                                 <a href="{{ url('/detail-villa/' . $item->id) }}">
                                     @php
                                         $images = json_decode($item->gambar);
@@ -21,19 +21,29 @@
                                     <img src="/{{ $firstImage }}" alt="Villa Image">
 
                                 </a>
-                                @if ($item->status == 'Tersedia')
-                                    <span class="category text-success">{{ $item->status }}</span>
-                                @else
-                                    <span class="category text-danger">{{ $item->status }}</span>
-                                @endif
-                                <h6>{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }}</h6>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    @if ($item->status == 'Tersedia')
+                                        <span class="category text-white">{{ $item->status }}</span>
+                                    @else
+                                        <span class="category text-white">{{ $item->status }}</span>
+                                    @endif
+                                    <h6 class="text-danger">{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }}</h6>
+                                </div>
                                 <h4><a href="{{ url('/detail-villa/' . $item->id) }}">{{ $item->nama_villa }}</a></h4>
-                                <ul>
-                                    <li>Kamar Tidur: <span>{{ $item->kamar_tidur }}</span></li>
-                                    <li>Kamar Mandi: <span>{{ $item->jumlah_wc }}</span></li>
-                                    <li>CCTV: <span>{{ $item->jumlah_cctv }}</span></li>
-                                    <li>Data Tampung: <span>{{ $item->daya_tampung }}</span></li>
-                                </ul>
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td>Kamar Tidur : <span>{{ $item->kamar_tidur }}</span></td>
+                                        <td>Kamar Mandi : <span>{{ $item->jumlah_wc }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CCTV : <span>{{ $item->jumlah_cctv }}</span></td>
+                                        <td>Daya Tampung : <span>{{ $item->daya_tampung }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Luas Villa : <span>{{ $item->luas }}</span></td>
+                                    </tr>
+                                </table>
+                                <hr>
                                 <div class="main-button">
                                     <a href="{{ url('/detail-villa/' . $item->id) }}">Jadwalkan Kunjungan</a>
                                 </div>

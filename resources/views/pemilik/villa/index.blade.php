@@ -1,5 +1,4 @@
-@extends('LayoutAdmin.app', ['title' => 'Villa'])
-
+@extends('layoutAdmin.app', ['title' => 'Villa'])
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -36,9 +35,9 @@
                                 <td>{{ 'Rp ' . number_format($item->harga, 0, ',', '.') }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 @if ($item->status == 'Tersedia')
-                                <td class="fw-bold text-success">{{ $item->status }}</td>
+                                    <td class="fw-bold text-success">{{ $item->status }}</td>
                                 @else
-                                <td class="fw-bold text-danger">{{ $item->status }}</td>
+                                    <td class="fw-bold text-danger">{{ $item->status }}</td>
                                 @endif
                                 <td>{{ $item->kamar_tidur }}</td>
                                 <td>{{ $item->jumlah_wc }}</td>

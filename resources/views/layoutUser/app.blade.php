@@ -8,21 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-    <title>{{$title}}</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}" />
+    <title>{{ config('app.name') . ' | ' . $title }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-villa-agency.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/owl.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/templatemo-villa-agency.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
-<body>
+<body style="font-family: Cerebri Sans">
     @include('sweetalert::alert')
 
     <!-- ***** Preloader Start ***** -->
@@ -47,11 +48,16 @@
 
     <footer>
         <div class="container">
-            <div class="col-lg-12">
-                <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved.
-
-                    Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                    Distribution: <a href="https://themewagon.com">ThemeWagon</a></p>
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="text-white">Copyright © 2024 Villa Agency Co. All rights reserved.</div>
+                <div>
+                    <ul class="social-links d-flex">
+                        <li><a href="#"><i class="fab fa-facebook" style="color: rgb(0, 70, 117)"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter" style="color: rgb(76, 164, 223)"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin" style="color: rgb(13, 35, 224)"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram" style="color: rgb(255, 15, 163)"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>

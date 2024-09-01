@@ -1,4 +1,4 @@
-@extends('LayoutAdmin.app', ['title' => 'Villa'])
+@extends('layoutAdmin.app', ['title' => 'Villa'])
 
 @section('modal-button')
     <a href="{{ url('/admin/villa') }}" class="btn btn-danger">Kembali</a>
@@ -14,7 +14,9 @@
                             <label for="pemilik_id" class="form-label">Pilih Pemilik</label>
                             <select name="pemilik_id" disabled id="pemilik_id" name="pemilik_id" class="form-select">
                                 @foreach ($pemilik as $item)
-                                    <option value="{{ $item->id }}" {{$item->id == $villa->pemilik_id ? 'selected' : ''}}>{{ $item->nama_lengkap }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ $item->id == $villa->pemilik_id ? 'selected' : '' }}>{{ $item->nama_lengkap }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -75,6 +77,11 @@
                             <label for="daya_tampung" class="form-label">Jumlah Daya Tampung</label>
                             <input type="number" class="form-control" name="daya_tampung" id="daya_tampung" disabled
                                 placeholder="Masukkan Jumlah Daya Tampung" value="{{ $villa->daya_tampung }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="luas" class="form-label">Luas Villa</label>
+                            <input type="text" class="form-control" name="luas" id="luas" disabled
+                                placeholder="Masukkan Luas Villa" value="{{ $villa->luas }}">
                         </div>
                     </div>
                 </div>

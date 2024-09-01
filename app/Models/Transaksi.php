@@ -14,6 +14,7 @@ class Transaksi extends Model
         'villa_id',
         'price',
         'status',
+        'tanggal',
         'snap_token',
     ];
 

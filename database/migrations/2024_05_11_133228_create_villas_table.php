@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string("jumlah_wc");
             $table->string("jumlah_cctv");
             $table->string("daya_tampung");
+            $table->string("luas");
             $table->text("keterangan")->nullable();
             $table->timestamps();
 

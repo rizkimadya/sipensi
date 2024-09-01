@@ -21,6 +21,7 @@ class Villa extends Model
         "jumlah_wc",
         "jumlah_cctv",
         "daya_tampung",
+        "luas",
         "keterangan",
     ];
 

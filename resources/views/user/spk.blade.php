@@ -32,7 +32,6 @@
                                 <option value="1">Kategori 1 (1 Kamar)</option>
                                 <option value="2">Kategori 2 (2 Kamar)</option>
                                 <option value="3">Kategori 3 (3 Kamar)</option>
-
                             </select>
                         </div>
 
@@ -44,7 +43,6 @@
                                 <option value="1">Kategori 1 (8 Orang)</option>
                                 <option value="2">Kategori 2 (10 Orang)</option>
                                 <option value="3">Kategori 3 (15 Orang)</option>
-
                             </select>
                         </div>
 
@@ -69,7 +67,19 @@
                                 <option value="1">Kategori 1 (1 CCTV)</option>
                                 <option value="2">Kategori 2 (2 CCTV)</option>
                                 <option value="3">Kategori 3 (0 CCTV)</option>
+                            </select>
+                        </div>
 
+                        <!-- Luas Villa -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="luas">Luas Villa</label>
+                            <select id="luas" name="luas" class="form-select" required>
+                                <option value="">Pilih Luas Villa</option>
+                                @foreach ($villas as $item)
+                                    <option value="{{ $loop->iteration }}">Kategori {{ $loop->iteration }}
+                                        ({{ $item->luas }})
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -92,32 +102,40 @@
                     <div class="row">
                         @foreach ($topVillas as $index => $result)
                             <div class="col-lg-4 mb-4">
-                                <div class="item">
+                                <div class="item shadow">
                                     <div class="ranking mb-3 mx-auto">
                                         <span class="badge bg-primary">Ranking {{ $index + 1 }}</span>
                                     </div>
-                                    <a href="{{ url('/detail-villa/' . $result['villa']->id) }}">
+                                    <a href="{{ url('/detail-villa/' . $result['villa']->id) }}" class="mb-2">
                                         @php
                                             $images = json_decode($result['villa']->gambar);
                                             $firstImage = is_array($images) && count($images) > 0 ? $images[0] : '';
                                         @endphp
                                         <img src="/{{ $firstImage }}" alt="Villa Image" class="img-fluid">
                                     </a>
-                                    @if ($result['villa']->status == 'Tersedia')
-                                        <span class="category text-success">{{ $result['villa']->status }}</span>
-                                    @else
-                                        <span class="category text-danger">{{ $result['villa']->status }}</span>
-                                    @endif
-                                    <h6>{{ 'Rp ' . number_format($result['villa']->harga, 0, ',', '.') }}</h6>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        @if ($result['villa']->status == 'Tersedia')
+                                            <span class="category text-white">{{ $result['villa']->status }}</span>
+                                        @else
+                                            <span class="category text-white">{{ $result['villa']->status }}</span>
+                                        @endif
+                                        <h6 class="text-danger">
+                                            {{ 'Rp ' . number_format($result['villa']->harga, 0, ',', '.') }}</h6>
+                                    </div>
                                     <h4><a
                                             href="{{ url('/detail-villa/' . $result['villa']->id) }}">{{ $result['villa']->nama_villa }}</a>
                                     </h4>
-                                    <ul>
-                                        <li>Kamar Tidur: <span>{{ $result['villa']->kamar_tidur }}</span></li>
-                                        <li>Kamar Mandi: <span>{{ $result['villa']->jumlah_wc }}</span></li>
-                                        <li>CCTV: <span>{{ $result['villa']->jumlah_cctv }}</span></li>
-                                        <li>Daya Tampung: <span>{{ $result['villa']->daya_tampung }}</span></li>
-                                    </ul>
+                                    <table style="width: 100%">
+                                        <tr>
+                                            <td>Kamar Tidur : <span>{{ $result['villa']->kamar_tidur }}</span></td>
+                                            <td>Kamar Mandi : <span>{{ $result['villa']->jumlah_wc }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>CCTV : <span>{{ $result['villa']->jumlah_cctv }}</span></td>
+                                            <td>Daya Tampung : <span>{{ $result['villa']->daya_tampung }}</span></td>
+                                        </tr>
+                                    </table>
+                                    <hr>
                                     <div class="main-button">
                                         <a href="{{ url('/detail-villa/' . $result['villa']->id) }}">Jadwalkan
                                             Kunjungan</a>

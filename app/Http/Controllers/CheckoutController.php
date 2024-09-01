@@ -16,6 +16,7 @@ class CheckoutController extends Controller
             'villa_id' => 'required',
             'price' => 'required',
             'status' => 'required',
+            'tanggal' => 'required',
         ]);
 
         // Set your Merchant Server Key
@@ -51,6 +52,7 @@ class CheckoutController extends Controller
         $checkout->price = $request->price;
         $checkout->snap_token = $snapToken;
         $checkout->status = $request->status;
+        $checkout->tanggal = $request->tanggal;
 
         $checkout->save();
 

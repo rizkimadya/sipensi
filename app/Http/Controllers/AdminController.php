@@ -39,10 +39,6 @@ class AdminController extends Controller
             ->latest('transaksis.created_at')
             ->get();
 
-            // dd($transaksi);
-
         return view('admin.transaksi.index', compact('transaksi'));
     }
-
-
 }

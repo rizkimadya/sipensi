@@ -1,4 +1,4 @@
-@extends('LayoutAdmin.app', ['title' => 'Pemilik Villa'])
+@extends('layoutAdmin.app', ['title' => 'Pemilik Villa'])
 
 @section('content')
     <div class="row">
@@ -16,14 +16,14 @@
                     </thead>
                     <tbody>
                         @foreach ($pemilik as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->nama_lengkap }}</td>
-                            <td>{{ $item->no_wa }}</td>
-                            <td>{{ $item->username }}</td>
-                            <td>{{ $item->alamat }}</td>
-                        </tr>
-                    @endforeach
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama_lengkap }}</td>
+                                <td>{{ $item->no_wa }}</td>
+                                <td>{{ $item->username }}</td>
+                                <td>{{ $item->alamat }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

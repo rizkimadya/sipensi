@@ -1,7 +1,7 @@
 @extends('layoutUser.app', ['title' => 'Riwayat Reservasi'])
 
 @section('contentUser')
-    <div class="main-banner mt-5 wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s" style="height: 40vh;">
+    <div class="main-banner mt-5 wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s" style="height: 56.7vh;">
         <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
             <div class="container mt-md-5 mt-3 spk">
                 <div class="col-12 mb-5">
@@ -21,7 +21,8 @@
                                                 <th>Nama Villa</th>
                                                 <th>Harga</th>
                                                 <th>Status</th>
-                                                <th>Date</th>
+                                                <th>Tanggal Reservasi</th>
+                                                <th>Tanggal Masuk</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -41,6 +42,7 @@
                                                         @endif
                                                     </td>
                                                     <td>{{ $item['created_at'] }}</td>
+                                                    <td>{{ $item->tanggal }}</td>
                                                     <td>
                                                         @if ($item->status == 'pending')
                                                             <a href="{{ url('transaksi/' . $item->snap_token) }}"

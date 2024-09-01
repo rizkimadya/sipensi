@@ -48,6 +48,7 @@ class VillaController extends Controller
             'jumlah_wc' => 'required',
             'jumlah_cctv' => 'required',
             'daya_tampung' => 'required',
+            'luas' => 'required',
         ]);
 
         // Initialize an array to store the image filenames
@@ -73,6 +74,7 @@ class VillaController extends Controller
             'jumlah_wc' => $request->jumlah_wc,
             'jumlah_cctv' => $request->jumlah_cctv,
             'daya_tampung' => $request->daya_tampung,
+            'luas' => $request->luas,
             'keterangan' => $request->keterangan,
         ]);
 
@@ -132,7 +134,7 @@ class VillaController extends Controller
             $data['gambar'] = json_encode($gambarPaths);
         }
 
-        if ($villa->pemilik_id == Auth::user()->id) {
+        if ($data) {
             $villa->update($data);
             Alert::success('Success', 'Berhasil mengupdate data villa');
         } else {

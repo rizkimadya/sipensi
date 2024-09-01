@@ -1,4 +1,4 @@
-@extends('LayoutAdmin.app', ['title' => 'Villa'])
+@extends('layoutAdmin.app', ['title' => 'Villa'])
 
 @section('modal-button')
     <!-- Button trigger modal -->
@@ -99,6 +99,11 @@
                                         <label for="daya_tampung" class="form-label">Jumlah Daya Tampung</label>
                                         <input type="number" class="form-control" name="daya_tampung" id="daya_tampung"
                                             required placeholder="Masukkan Jumlah Daya Tampung" value="0">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="luas" class="form-label">Luas Villa</label>
+                                        <input type="text" class="form-control" name="luas" id="luas"
+                                            required placeholder="Masukkan Luas Villa">
                                     </div>
                                 </div>
                             </div>

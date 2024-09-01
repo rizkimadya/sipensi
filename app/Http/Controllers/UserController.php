@@ -28,7 +28,8 @@ class UserController extends Controller
 
     public function spkForm()
     {
-        return view('user.spk');
+        $villas = Villa::all();
+        return view('user.spk', compact('villas'));
     }
 
     public function spk(Request $request)
@@ -39,6 +40,7 @@ class UserController extends Controller
             'kamar_tidur' => 'required|numeric|min:1|max:5',
             'daya_tampung' => 'required|numeric|min:1|max:5',
             'jumlah_wc' => 'required|numeric|min:1|max:5',
+            'luas' => 'required|string', // Validasi sebagai string karena luas memiliki format spesifik
         ]);
 
         // Bobot
@@ -47,6 +49,7 @@ class UserController extends Controller
             'kamar_tidur' => 0.25,
             'daya_tampung' => 0.25,
             'jumlah_wc' => 0.20,
+            'luas' => 0.20,
         ];
 
         // Ambil data dari form
@@ -54,7 +57,8 @@ class UserController extends Controller
             'harga',
             'kamar_tidur',
             'daya_tampung',
-            'jumlah_wc'
+            'jumlah_wc',
+            'luas'
         ]);
 
         // Ambil semua villa
@@ -62,24 +66,42 @@ class UserController extends Controller
         $results = [];
 
         foreach ($villas as $villa) {
+            // Pastikan nilai villa adalah numerik atau diparsing dengan benar
             $dataVilla = [
-                'harga' => $villa->harga,
-                'kamar_tidur' => $villa->kamar_tidur,
-                'daya_tampung' => $villa->daya_tampung,
-                'jumlah_wc' => $villa->jumlah_wc,
+                'harga' => is_numeric($villa->harga) ? (int)$villa->harga : 0,
+                'kamar_tidur' => is_numeric($villa->kamar_tidur) ? (int)$villa->kamar_tidur : 0,
+                'daya_tampung' => is_numeric($villa->daya_tampung) ? (int)$villa->daya_tampung : 0,
+                'jumlah_wc' => is_numeric($villa->jumlah_wc) ? (int)$villa->jumlah_wc : 0,
+                'luas' => $this->parseLuas($villa->luas), // Panggil fungsi untuk parsing nilai luas
             ];
+
+            // Cek jika ada nilai non-numerik sebelum perhitungan
+            foreach ($dataVilla as $key => $value) {
+                if (!is_numeric($value)) {
+                    $dataVilla[$key] = 0; // Set ke 0 jika tidak valid
+                }
+            }
+
+            // Debugging: Cek nilai-nilai sebelum perhitungan
+            // dd($dataVilla);
 
             // Normalisasi nilai dan hitung nilai akhir
             $nilaiAkhir = 0;
             foreach ($inputData as $key => $value) {
                 if ($key === 'harga') {
-                    // Kriteria cost: normalisasi dengan metode invers (nilai minimum yang diinginkan)
                     $minValue = Villa::min($key);
-                    $normalized = $minValue / $dataVilla[$key];
+                    if (is_numeric($minValue) && $dataVilla[$key] > 0) {
+                        $normalized = $minValue / $dataVilla[$key];
+                    } else {
+                        $normalized = 0;
+                    }
                 } else {
-                    // Kriteria benefit: normalisasi dengan metode biasa (nilai maksimum yang diinginkan)
                     $maxValue = Villa::max($key);
-                    $normalized = $dataVilla[$key] / $maxValue;
+                    if (is_numeric($maxValue) && $maxValue > 0) {
+                        $normalized = $dataVilla[$key] / $maxValue;
+                    } else {
+                        $normalized = 0;
+                    }
                 }
 
                 // Hitung nilai akhir
@@ -100,7 +122,23 @@ class UserController extends Controller
         $topVillas = array_slice($results, 0, 3);
 
         return view('user.spk', [
-            'topVillas' => $topVillas
+            'topVillas' => $topVillas,
+            'villas' => $villas
         ]);
+    }
+
+    /**
+     * Fungsi untuk parsing nilai luas
+     */
+    private function parseLuas($luas)
+    {
+        // Cek apakah format luas mengandung "x"
+        if (preg_match('/(\d+)\s*x\s*(\d+)/', $luas, $matches)) {
+            // Kalkulasi luas sebagai panjang x lebar
+            return (int)$matches[1] * (int)$matches[2];
+        }
+
+        // Jika luas tidak dalam format "300 x 150", kembalikan 0 atau nilai default lain
+        return 0;
     }
 }

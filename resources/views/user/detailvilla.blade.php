@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <span class="breadcrumb">
+                    <span class="breadcrumb" style="border-radius: 8px;">
                         <h4>{{ $detail->nama_villa }}</h4>
                         @if ($detail->status == 'Tersedia')
                             <p class="text-success fw-bolder">Tersedia</p>
@@ -16,15 +16,44 @@
                     <h3>{{ 'Rp ' . number_format($detail->harga, 0, ',', '.') }} / Hari</h3>
                     @if ($detail->status == 'Tersedia')
                         <div class="mt-4">
-                            <form action="{{ url('/checkout') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="user_id"
-                                    value="{{ auth()->check() ? auth()->user()->id : '' }}">
-                                <input type="hidden" name="villa_id" value="{{ $detail->id }}">
-                                <input type="hidden" name="status" value="pending">
-                                <input type="hidden" name="price" value="{{ $detail->harga }}">
-                                <button class="btn btn-success px-4" type="submit">Reservasi Villa</button>
-                            </form>
+                            <!-- Button trigger modal -->
+                            @if (auth()->check())
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Reservasi Villa
+                                </button>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-primary">Reservasi Villa</a>
+                            @endif
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Tanggal Reservasi</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ url('/checkout') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="user_id"
+                                                    value="{{ auth()->check() ? auth()->user()->id : '' }}">
+                                                <input type="hidden" name="villa_id" value="{{ $detail->id }}">
+                                                <input type="hidden" name="status" value="pending">
+                                                <input type="hidden" name="price" value="{{ $detail->harga }}">
+                                                <input type="date" name="tanggal" class="form-control">
+                                                <hr>
+                                                <div class="d-flex justify-content-end">
+                                                    <button class="btn btn-success" type="submit">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     @else
                         <div class="mt-4">
@@ -60,7 +89,7 @@
                             <div class="carousel-inner">
                                 @foreach ($images as $index => $image)
                                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}" data-bs-interval="10000">
-                                        <img src="/{{ $image }}" class="d-block w-100"
+                                        <img src="/{{ $image }}" class="d-block w-100 rounded"
                                             alt="Slide {{ $index + 1 }}">
                                         <div class="carousel-caption d-none d-md-block">
                                         </div>
@@ -103,6 +132,9 @@
                             </li>
                             <li>
                                 <h4>{{ $detail->daya_tampung }} Orang<br><span>Daya Tampung</span></h4>
+                            </li>
+                            <li>
+                                <h4>{{ $detail->luas }}<br><span>Luas Villa</span></h4>
                             </li>
                         </ul>
                     </div>

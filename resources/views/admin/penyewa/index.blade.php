@@ -1,4 +1,4 @@
-@extends('LayoutAdmin.app', ['title' => 'Penyewa Villa'])
+@extends('layoutAdmin.app', ['title' => 'Penyewa Villa'])
 
 @section('content')
     <div class="row">

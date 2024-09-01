@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('villa_id');
             $table->integer('price');
             $table->enum('status', ['pending', 'success', 'failed']);
+            $table->string('tanggal');
             $table->string('snap_token')->nullable();
             $table->timestamps();
 

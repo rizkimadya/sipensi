@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Halaman Registration</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}" />
+    <title>{{ config('app.name') }} | Registration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -10,13 +11,14 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="{{ asset('assets_login//css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets_login/css/style.css') }}">
 
 </head>
 
-<body class="img js-fullheight" style="background-image: url(assets_login/images/bg2.jpg);">
+<body class="img js-fullheight d-flex justify-content-center align-items-center"
+    style="background-image: url(assets_login/images/bg2.jpg);">
     @include('sweetalert::alert')
-    <section class="ftco-section">
+    <section class="p-3" style="background-color: #1a1f2475; border-radius: 10px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
@@ -24,7 +26,7 @@
                         <img alt="Logo" class="heading-section mb-0"
                             src="{{ asset('assets2/media/logos/sipensi-logo.png') }}" style="width: 50%;" />
                     </a>
-                    <span class="bg-white py-1 px-2">Sistem Informasi Penyewaan & Reservasi Villa</span>
+                    <span class="text-white h4 font-weight-bold">Sistem Informasi Penyewaan & Reservasi Villa</span>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -75,9 +77,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <select name="roles" id="roles" class="form-control" required>
-                                            <option value="" selected disabled>Roles</option>
-                                            <option value="penyewa">Penyewa Villa</option>
-                                            <option value="pemilik">Pemilik Villa</option>
+                                            <option style="color: black" value="" selected disabled>Roles</option>
+                                            <option style="color: black" value="penyewa">Penyewa Villa</option>
+                                            <option style="color: black" value="pemilik">Pemilik Villa</option>
                                         </select>
                                     </div>
                                 </div>
