@@ -65,10 +65,10 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-12 d-flex">
+                <div class="col-12 d-flex mb-3">
                     <a href="{{ url('/villa') }}" class="btn btn-dark mx-auto fw-blod"
                         style="border-radius: 34px; font-size:14px; padding:12px 36px;">Lihat Semua Villa</a>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
