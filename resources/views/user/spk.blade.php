@@ -111,7 +111,7 @@
                                             $images = json_decode($result['villa']->gambar);
                                             $firstImage = is_array($images) && count($images) > 0 ? $images[0] : '';
                                         @endphp
-                                        <img src="/{{ $firstImage }}" alt="Villa Image" class="img-fluid">
+                                        <img src="/{{ $firstImage }}" height="35vh" alt="Villa Image" class="img-fluid">
                                     </a>
                                     <div class="d-flex justify-content-between align-items-center mt-3">
                                         @if ($result['villa']->status == 'Tersedia')
