@@ -75,11 +75,10 @@
                             <label class="form-label" for="luas">Luas Villa</label>
                             <select id="luas" name="luas" class="form-select" required>
                                 <option value="">Pilih Luas Villa</option>
-                                @foreach ($villas as $item)
-                                    <option value="{{ $loop->iteration }}">Kategori {{ $loop->iteration }}
-                                        ({{ $item->luas }})
-                                    </option>
-                                @endforeach
+                                <option value="1">Kategori 1 (115 Meter Persegi)</option>
+                                <option value="2">Kategori 2 (120 Meter Persegi)</option>
+                                <option value="3">Kategori 3 (125 Meter Persegi)</option>
+                                </option>
                             </select>
                         </div>
                     </div>
