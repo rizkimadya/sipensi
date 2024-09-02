@@ -18,7 +18,7 @@
                                         $images = json_decode($item->gambar);
                                         $firstImage = is_array($images) && count($images) > 0 ? $images[0] : '';
                                     @endphp
-                                    <img src="/{{ $firstImage }}" height="35vh" alt="Villa Image">
+                                    <img src="/{{ $firstImage }}" style="height: 35vh;" alt="Villa Image">
 
                                 </a>
                                 <div class="d-flex justify-content-between align-items-center mt-3">
