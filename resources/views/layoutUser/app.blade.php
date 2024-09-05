@@ -46,7 +46,7 @@
     </section>
 
 
-    <footer>
+    <footer style="font-size: larger">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="text-white">Copyright © 2024 Villa Agency Co. All rights reserved.</div>
@@ -62,6 +62,9 @@
         </div>
     </footer>
 
+    <button id="backToBottom" type="button" onclick="scrollToBottom()" class="btn btn-outline-danger back-to-bottom"><i
+            class="fa-solid fa-arrow-down"></i></button>
+
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -72,6 +75,28 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     @yield('script')
+
+    <script>
+        // Tampilkan tombol ketika pengguna scroll ke atas dari bagian bawah halaman
+        window.onscroll = function() {
+            let scrollPosition = window.scrollY || document.documentElement.scrollTop;
+            let windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (scrollPosition < windowHeight - 50) {
+                document.getElementById("backToBottom").style.display = "block";
+            } else {
+                document.getElementById("backToBottom").style.display = "none";
+            }
+        };
+
+        // Fungsi untuk scroll ke bagian bawah halaman
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth"
+            });
+        }
+    </script>
 
 </body>
 
